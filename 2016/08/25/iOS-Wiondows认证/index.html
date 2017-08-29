@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS-Wiondows认证 | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="三行代码让你通过UIWebview中遇到的NTLM验证Windows认证分为NTLM认证 和Kerberos v5身份认证，这里只列出NTLM认证的情况。在移动开发中细分为两种情况（iOS为例） 访问的API是带NTLM认证+From身份认证其中NTLM认证只是作为一种加强方式（只是微软环境才有的），或者受限于服务端的其他环境需要。那么在移动端该层认证有点多余，并且会影响效率。因为每次访问该接口都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-Wiondows认证">
+<meta property="og:url" content="/2016/08/25/iOS-Wiondows认证/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="三行代码让你通过UIWebview中遇到的NTLM验证Windows认证分为NTLM认证 和Kerberos v5身份认证，这里只列出NTLM认证的情况。在移动开发中细分为两种情况（iOS为例） 访问的API是带NTLM认证+From身份认证其中NTLM认证只是作为一种加强方式（只是微软环境才有的），或者受限于服务端的其他环境需要。那么在移动端该层认证有点多余，并且会影响效率。因为每次访问该接口都">
+<meta property="og:updated_time" content="2017-05-22T07:51:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-Wiondows认证">
+<meta name="twitter:description" content="三行代码让你通过UIWebview中遇到的NTLM验证Windows认证分为NTLM认证 和Kerberos v5身份认证，这里只列出NTLM认证的情况。在移动开发中细分为两种情况（iOS为例） 访问的API是带NTLM认证+From身份认证其中NTLM认证只是作为一种加强方式（只是微软环境才有的），或者受限于服务端的其他环境需要。那么在移动端该层认证有点多余，并且会影响效率。因为每次访问该接口都">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-iOS-Wiondows认证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/25/iOS-Wiondows认证/" class="article-date">
+  <time datetime="2016-08-25T13:47:06.000Z" itemprop="datePublished">2016-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS-Wiondows认证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="三行代码让你通过UIWebview中遇到的NTLM验证"><a href="#三行代码让你通过UIWebview中遇到的NTLM验证" class="headerlink" title="三行代码让你通过UIWebview中遇到的NTLM验证"></a>三行代码让你通过UIWebview中遇到的NTLM验证</h2><p>Windows认证分为<code>NTLM</code>认证 和<code>Kerberos v5</code>身份认证，这里只列出NTLM认证的情况。在移动开发中细分为两种情况（iOS为例）</p>
+<h4 id="访问的API是带NTLM认证-From身份认证"><a href="#访问的API是带NTLM认证-From身份认证" class="headerlink" title="访问的API是带NTLM认证+From身份认证"></a>访问的API是带NTLM认证+From身份认证</h4><p>其中NTLM认证只是作为一种加强方式（只是微软环境才有的），或者受限于服务端的其他环境需要。那么在移动端该层认证有点多余，并且会影响效率。因为每次访问该接口都是先返回401质询后，提取出scheme,若为NTLM再设置其认证信息，如设置其domain信息等。</p>
+<p>如访问xx移动登录接口，就一个典型的带了windows认证后又要传Form参数的情况</p>
+<p><a href="http://xxx.xxx.xx:8600/MobileService/MobileHandler.ashx?action=Login" target="_blank" rel="external">http://xxx.xxx.xx:8600/MobileService/MobileHandler.ashx?action=Login</a></p>
+<p>Form参数列表这里就不一一列出<br>如何获取需要NTLM api的数据？若使用ASIHttp的，只需要设置 request的username和password即可。AFHttpNetwork同理，只是设置credentials的时候复杂些。但是要用原生的NSURLConnection 或者NSURLSession 请参见下文中访问带NTLM验证的网页。从网络抓包结果来看：访问一次接口要先失败一次第二次传身份信息才成功，某种程度上导致效率较低。</p>
+<h4 id="访问的资源是html"><a href="#访问的资源是html" class="headerlink" title="访问的资源是html"></a>访问的资源是html</h4><p>即html需要先过了NTLM验证才能访问，如访问路由器的页面192.168.1.1，会默认弹出一个认证框出来。如果是我们自己开发或者集成带有windows认证的页面，就无法自动弹窗出来，因为弹窗属于窗口级别、在我们开发的程序中不能越级访问系统资源，需要我们手动实现起认证功能。这里用iOS原生的sdk方法说明。</p>
+<h5 id="Step-1，"><a href="#Step-1，" class="headerlink" title="Step 1，"></a>Step 1，</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSURLRequest *req =[NSURLRequest requestWithURL:reqUrl];</div><div class="line"></div><div class="line">NSURLConnection *connect =[NSURLConnection connectionWithRequest:req delegate:self];</div><div class="line"></div><div class="line">[connect start];</div></pre></td></tr></table></figure>
+<p>构建一个NSURLRequest请求对象，只需要一个NSURL地址即可，这里reqUrl可以写为</p>
+<p>[NSURL UrlWithString:@”<a href="http://需要过windows认证的页面地址”" target="_blank" rel="external">http://需要过windows认证的页面地址”</a>]</p>
+<h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2,"></a>Step 2,</h5><p>以NSURLRequest的实例对象构建NSURLConnection实例对象，并设置Connection的委托方法，可以理解为回调方法，当请求发送到服务端后，服务端返回数据后就会进入对应的回调方法，返回该连接是否需要认证、或者其他然后再进行处理。</p>
+<p>进入NSURLConnection的回调方法后，判断其认证方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">//处理身份认证(void)connection:(NSURLConnection *)connectiondidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    if ([challenge previousFailureCount] == 0)</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">//若是windows认证方式，iOS的sdk会自动进入该回调方法，</div><div class="line"></div><div class="line">//在没有尝试认证失败的情况下，设置Credential的参数</div><div class="line"></div><div class="line">        //USERNAME</div><div class="line"></div><div class="line">        //PASSWORD</div><div class="line"></div><div class="line">            [[challenge sender]useCredential:[NSURLCredential credentialWithUser:@&quot;USERNAME&quot;password:@&quot;PASSWORD&quot;persistence:NSURLCredentialPersistencePermanent]forAuthenticationChallenge:challenge];</div><div class="line"></div><div class="line">            NSLog(@&quot;...1&quot;);</div><div class="line"></div><div class="line">    &#125;else</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">若没有认证，则取消AuthenticaionChllenge的操作</div><div class="line"></div><div class="line">        [[challenge sender]cancelAuthenticationChallenge:challenge];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//处理访问的网页，在改方法里面再用webview载入request请求后，就可以实现了访问带有windows认证的网页。</div><div class="line"></div><div class="line">-(void)connection:(NSURLConnection *)connectiondidReceiveResponse:(NSURLResponse *)response;</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;received response viansurlconnection&quot;);</div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line">    /** THIS IS WHERE YOU SET MAKE THE NEWREQUEST TO UIWebView, which will use the new saved auth info **/</div><div class="line"></div><div class="line">#pragma mark -真实访问的url地址</div><div class="line"></div><div class="line">    NSURLRequest *urlRequest = [NSURLRequestrequestWithURL:[NSURL URLWithString:@&quot;http://192.168.90.130/_layouts/ReportServer/RSViewerPage.aspx?rv%3aRelativeReportUrl=%2fReportLib%2fReports%2f%25E8%25BF%2590%25E8%2590%25A5-%25E5%25AE%25A2%25E8%25BF%2590%25E9%2587%258F.rdl&quot;]];</div><div class="line">  </div><div class="line">    [_webView loadRequest:urlRequest];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>以上的代码适用于iOS7或者iOS8,但是在iOS9以上，苹果废弃了NSURLConnection，那么我们需要做的就是将NSURLConnection的方式迁移到NSURLSession的回调方法即可。</p>
+<p> <code>show me the code</code></p>
+<h5 id="构建NSURLSession请求，设置委托回调"><a href="#构建NSURLSession请求，设置委托回调" class="headerlink" title="构建NSURLSession请求，设置委托回调"></a>构建NSURLSession请求，设置委托回调</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">NSMutableURLRequest *webReq = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://xxx.com:8000/todolist.aspx&quot;]];</div><div class="line">NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];</div><div class="line">NSURLSession *conn =[NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];</div><div class="line">NSURLSessionDataTask *task = [conn dataTaskWithRequest:webReq];</div><div class="line">[task resume];</div></pre></td></tr></table></figure>
+<h5 id="在回调鉴权中填入相关信息"><a href="#在回调鉴权中填入相关信息" class="headerlink" title="在回调鉴权中填入相关信息"></a>在回调鉴权中填入相关信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge</div><div class="line"> completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler &#123;</div><div class="line">    </div><div class="line">    NSString *authMethod = [[challenge protectionSpace] authenticationMethod];</div><div class="line">    //下面的鉴权没有判断是哪种鉴权方法，精细点可以只针对哪种认证做处理</div><div class="line">    if ([challenge previousFailureCount] == 0) &#123;</div><div class="line">        _authed = YES;</div><div class="line">        /* SET YOUR credentials, i&apos;m just hard coding them in, tweak as necessary */</div><div class="line">        NSURLCredential *cred = [NSURLCredential credentialWithUser:@&quot;USERNAME&quot;</div><div class="line">                                                           password:@&quot;PASSWORD&quot;</div><div class="line">persistence:NSURLCredentialPersistenceNone];</div><div class="line">        [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];</div><div class="line">        </div><div class="line">        completionHandler(NSURLSessionAuthChallengeUseCredential, cred);</div><div class="line">        NSLog(@&quot;Finished Challenge&quot;);</div><div class="line">        </div><div class="line">    &#125; else &#123;</div><div class="line">        </div><div class="line">        [[challenge sender] cancelAuthenticationChallenge:challenge];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="webview载入request"><a href="#webview载入request" class="headerlink" title="webview载入request"></a>webview载入request</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask</div><div class="line">didReceiveResponse:(NSURLResponse *)response</div><div class="line"> completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler &#123;</div><div class="line">    </div><div class="line">    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://xxxx:8000/mERP/MobileWorkflow/todolist.aspx?usercode=USERNAME&amp;password=PWD&quot;]];</div><div class="line">    [_myWebView loadRequest:urlRequest];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><p>以上设置解决api访问级别的应该没有问题，但是测试在iOS9.3+webview载入request依然会有问题。可以构建一个NSURLComponets来解决这个问题。<strong>鉴权那套都不需要了</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSURLComponents *componet = [NSURLComponents componentsWithString:@&quot;http://xxxx.xxx.com:8000/mERP/MobileWorkflow/todolist.aspx?usercode=USERNAME&amp;password=PASSWORD&quot;];</div><div class="line">componet.user = @&quot;USERNAME&quot;;</div><div class="line">componet.password = @&quot;PASSWORD&quot;;</div><div class="line">[_myWebView loadRequest:[NSURLRequest requestWithURL:componet.URL]];</div></pre></td></tr></table></figure>
+<p><strong>就是这么任性</strong></p>
+<p>总结：</p>
+<p>不管是利用三方框架还是sdk的自带方法，用了windows认证的情况都是存在两次连接的情况的。至于在pc中是否也是两次连接我这里没有做详细研究。</p>
+<p>补充：</p>
+<p>在Android开发中实现了访问NTLM认证网页或者带windows认证接口的问题，现在在xx地铁中安卓端的代码就是采用的我在文中列出的解决办法。</p>
+<p>至于访问地铁报表页面或者访问公文文档库页面，显示自动匹配的问题我们是通过Client的UA字符串的办法来解决的，即让安卓客户端欺骗Sharepoint服务器它是iOS设备，并且这里UA字符串是我测试了iOS6，iOS7的各个硬件设备提取出来的。</p>
+<p>Mozilla/5.0 (iPhone; CPUiPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko)Version/6.0 Mobile/10B329 Safari/8536.25</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/08/25/iOS-Wiondows认证/" data-id="cj6wyl6a2000cjizokhw7glvb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/01/swift01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          swift学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/29/iOS后台长活及逆向验证-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iOS后台长活及逆向验证</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

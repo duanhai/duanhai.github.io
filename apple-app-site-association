@@ -1,0 +1,17 @@
+{
+  "applinks": {
+      "apps": [],
+      "details": [
+
+          {
+              "appID": "847L9RGK36.com.remarkmedia.app.kankan",
+              "paths": [ "*","/","/test/" ]
+          },
+   
+          {
+              "appID": "TH5F35YE25.com.remarkmedia.app.kankan",
+              "paths": [ "*","/" ]
+          },
+      ]
+  }
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Lede运行v2ray | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LEDE 运行v2ray不完美的解决办法从官网下载v2ray的运行文件放在/usr/bin/v2ray 目录下v2ray release 下载 将config.json(或者你直接改名为v2ray.json)文件放在/etc/v2ray.json将 /usr/bin/v2ray  和 /etc/v2ray.json 文件赋予权限 直接猛点的权限赋值方法 chomd 777 path  1/usr/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lede运行v2ray">
+<meta property="og:url" content="/2017/08/09/Lede运行v2ray/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="LEDE 运行v2ray不完美的解决办法从官网下载v2ray的运行文件放在/usr/bin/v2ray 目录下v2ray release 下载 将config.json(或者你直接改名为v2ray.json)文件放在/etc/v2ray.json将 /usr/bin/v2ray  和 /etc/v2ray.json 文件赋予权限 直接猛点的权限赋值方法 chomd 777 path  1/usr/">
+<meta property="og:updated_time" content="2017-08-16T07:09:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lede运行v2ray">
+<meta name="twitter:description" content="LEDE 运行v2ray不完美的解决办法从官网下载v2ray的运行文件放在/usr/bin/v2ray 目录下v2ray release 下载 将config.json(或者你直接改名为v2ray.json)文件放在/etc/v2ray.json将 /usr/bin/v2ray  和 /etc/v2ray.json 文件赋予权限 直接猛点的权限赋值方法 chomd 777 path  1/usr/">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Lede运行v2ray" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/09/Lede运行v2ray/" class="article-date">
+  <time datetime="2017-08-08T17:27:47.000Z" itemprop="datePublished">2017-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lede运行v2ray
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="LEDE-运行v2ray不完美的解决办法"><a href="#LEDE-运行v2ray不完美的解决办法" class="headerlink" title="LEDE 运行v2ray不完美的解决办法"></a>LEDE 运行v2ray不完美的解决办法</h4><p><strong>从官网下载v2ray的运行文件放在/usr/bin/v2ray 目录下</strong><br><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="external">v2ray release 下载</a></p>
+<p><strong>将config.json(或者你直接改名为v2ray.json)文件放在/etc/v2ray.json</strong><br><strong>将 /usr/bin/v2ray  和 /etc/v2ray.json 文件赋予权限 直接猛点的权限赋值方法 chomd 777 path </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/v2ray --config /etc/v2ray.json</div></pre></td></tr></table></figure>
+<p>对应修改config.json文件后传到自己的lede的对应的目录中去<br>然后在网络设置中–代理—网页代理,安全网络代理中添加 你的路由器ip e.g.   192.168.1.111 加上对应的端口 1080;socks的代理配置同理</p>
+<p><strong> 如果inbound 中的protocol: socks,需要在settings中增加 “auth”: “noauth” </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;inbound&quot;: &#123;</div><div class="line">   &quot;port&quot;: 1080,</div><div class="line">   &quot;protocol&quot;: &quot;socks&quot;,</div><div class="line">   &quot;settings&quot;: &#123;</div><div class="line">     &quot;auth&quot;: &quot;noauth&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;log&quot;: &#123;</div><div class="line">    &quot;error&quot;: &quot;/var/log/v2ray/error.log&quot;,</div><div class="line">    &quot;loglevel&quot;: &quot;warning&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;inbound&quot;: &#123;</div><div class="line">    &quot;port&quot;: 1080,</div><div class="line">    &quot;protocol&quot;: &quot;http&quot;,</div><div class="line">    &quot;settings&quot;: &#123;&#125;</div><div class="line">  &#125;,</div><div class="line">  &quot;outbound&quot;: &#123;</div><div class="line">    &quot;protocol&quot;: &quot;vmess&quot;,</div><div class="line">    &quot;settings&quot;: &#123;</div><div class="line">      &quot;vnext&quot;: [</div><div class="line">        &#123;</div><div class="line">          &quot;address&quot;: &quot;v2ray.cool&quot;,</div><div class="line">          &quot;port&quot;: 10086,</div><div class="line">          &quot;users&quot;: [</div><div class="line">            &#123;</div><div class="line">              &quot;id&quot;: &quot;a3482e88-686a-4a58-8126-99c9df64b7bf&quot;,</div><div class="line">              &quot;alterId&quot;: 64,</div><div class="line">              &quot;security&quot;: &quot;auto&quot;</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    &quot;mux&quot;: &#123;</div><div class="line">      &quot;enabled&quot;: true</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  &quot;outboundDetour&quot;: [</div><div class="line">    &#123;</div><div class="line">      &quot;protocol&quot;: &quot;freedom&quot;,</div><div class="line">      &quot;settings&quot;: &#123;&#125;,</div><div class="line">      &quot;tag&quot;: &quot;direct&quot;</div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  &quot;dns&quot;: &#123;</div><div class="line">    &quot;servers&quot;: [</div><div class="line">      &quot;8.8.8.8&quot;,</div><div class="line">      &quot;8.8.4.4&quot;,</div><div class="line">      &quot;localhost&quot;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &quot;routing&quot;: &#123;</div><div class="line">    &quot;strategy&quot;: &quot;rules&quot;,</div><div class="line">    &quot;settings&quot;: &#123;</div><div class="line">      &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,</div><div class="line">      &quot;rules&quot;: [</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;field&quot;,</div><div class="line">          &quot;port&quot;: &quot;1-52&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;field&quot;,</div><div class="line">          &quot;port&quot;: &quot;54-79&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;field&quot;,</div><div class="line">          &quot;port&quot;: &quot;81-442&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;field&quot;,</div><div class="line">          &quot;port&quot;: &quot;444-65535&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;chinasites&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;field&quot;,</div><div class="line">          &quot;ip&quot;: [</div><div class="line">            &quot;0.0.0.0/8&quot;,</div><div class="line">            &quot;10.0.0.0/8&quot;,</div><div class="line">            &quot;100.64.0.0/10&quot;,</div><div class="line">            &quot;127.0.0.0/8&quot;,</div><div class="line">            &quot;169.254.0.0/16&quot;,</div><div class="line">            &quot;172.16.0.0/12&quot;,</div><div class="line">            &quot;192.0.0.0/24&quot;,</div><div class="line">            &quot;192.0.2.0/24&quot;,</div><div class="line">            &quot;192.168.0.0/16&quot;,</div><div class="line">            &quot;198.18.0.0/15&quot;,</div><div class="line">            &quot;198.51.100.0/24&quot;,</div><div class="line">            &quot;203.0.113.0/24&quot;,</div><div class="line">            &quot;::1/128&quot;,</div><div class="line">            &quot;fc00::/7&quot;,</div><div class="line">            &quot;fe80::/10&quot;</div><div class="line">          ],</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">          &quot;type&quot;: &quot;chinaip&quot;,</div><div class="line">          &quot;outboundTag&quot;: &quot;direct&quot;</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h5 id="最新更新2017-8-16"><a href="#最新更新2017-8-16" class="headerlink" title="最新更新2017 8.16"></a>最新更新2017 8.16</h5><blockquote>
+<p><a href="https://github.com/v2ray/v2ray-core/issues/483" target="_blank" rel="external">https://github.com/v2ray/v2ray-core/issues/483</a><br>用otaku的一段代码实现了v2ray的进程守护</p>
+</blockquote>
+<p>还是放在 /etc/init.d/v2ray</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">START=90</div><div class="line"></div><div class="line">USE_PROCD=1</div><div class="line">start_service() &#123;</div><div class="line">  mkdir /var/log/v2ray &gt; /dev/null 2&gt;&amp;1</div><div class="line">  procd_open_instance</div><div class="line">  procd_set_param respawn</div><div class="line">  procd_set_param command /usr/bin/v2ray -config /etc/v2ray/config.json</div><div class="line">  procd_set_param file /etc/v2ray/config.json</div><div class="line">  procd_set_param stdout 1</div><div class="line">  procd_set_param stderr 1</div><div class="line">  procd_set_param pidfile /var/run/v2ray.pid</div><div class="line">  procd_close_instance</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2017/08/09/Lede运行v2ray/" data-id="cj6wyl69t0005jizolxgv6ul6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/15/c的注意事项/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          c的注意事项
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/31/v2ray/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">V2Ray 配置ss &amp; vmess</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Node.js webapi | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970RESTful API    GET  /products    var express = require(&amp;apos;express&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js webapi">
+<meta property="og:url" content="/2016/04/06/Node-js-webapi/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970RESTful API    GET  /products    var express = require(&amp;apos;express&amp;">
+<meta property="og:updated_time" content="2017-05-22T07:51:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js webapi">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970RESTful API    GET  /products    var express = require(&amp;apos;express&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Node-js-webapi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/Node-js-webapi/" class="article-date">
+  <time datetime="2016-04-06T05:46:57.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js webapi
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">RESTful API  </div><div class="line">  </div><div class="line">GET  /products  </div><div class="line">  </div><div class="line">var express = require(&apos;express&apos;)  </div><div class="line">var app = express();  </div><div class="line">  </div><div class="line">var products = [  </div><div class="line">   &#123; name: &apos;apple juice&apos;, description: &apos;good&apos;, price: 12.12 &#125;,  </div><div class="line">   &#123; name: &apos;banana juice&apos;, description: &apos;just so sos&apos;, price: 4.50 &#125;  </div><div class="line">]  </div><div class="line">  </div><div class="line">app.get(&apos;/products&apos;, function(req, res) &#123;  </div><div class="line">   res.json(products);  </div><div class="line">&#125;);  </div><div class="line">  </div><div class="line">var server = app.listen(3000, function() &#123;  </div><div class="line">   console.log(&apos;listening on port %d&apos;, server.address().port);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">GET /products/:id =&gt; 200  </div><div class="line">  </div><div class="line">app.get(&apos;/products/:id&apos;, function(req, res) &#123;  </div><div class="line">   res.json(products[req.params.id]);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">GET /products/:id =&gt; 404  </div><div class="line">  </div><div class="line">app.get(&apos;/products/:id&apos;, function(req, res) &#123;  </div><div class="line">   if (products.length &lt;= req.params.id || req.params.id &lt; 0) &#123;  </div><div class="line">      res.statusCode = 404;  </div><div class="line">      return res.send(&apos;Error 404: No products found&apos;)  </div><div class="line">   &#125;  </div><div class="line">   res.json(products[req.params.id]);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">POST /products =&gt; 201  </div><div class="line">  </div><div class="line">因为我们在接受POST请求的时候，需要解析POST的body，所以，我们就要使用middleware来做这件事情，在早期版本中提供了bodyParser这样的方式。但是这种方式会创建大量的临时文件。所以，我们应该直接使用json或者urlencoded这样的middleware直接解析  </div><div class="line">  </div><div class="line">在package.json中添加依赖：  </div><div class="line">  </div><div class="line">    &quot;body-parser&quot;: &quot;1.4.3&quot;  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">var express = require(&apos;express&apos;),  </div><div class="line">   bodyParser = require(&apos;body-parser&apos;)  </div><div class="line">  </div><div class="line">var app = express()  </div><div class="line">   .use(bodyParser.json());  </div><div class="line">  </div><div class="line">app.post(&apos;/products&apos;, function(req, res) &#123;  </div><div class="line">   var newProduct = &#123;  </div><div class="line">      name: req.param(&apos;name&apos;),  </div><div class="line">      description: req.param(&apos;description&apos;),  </div><div class="line">      price: req.param(&apos;price&apos;)  </div><div class="line">   &#125;  </div><div class="line">  </div><div class="line">   products.push(newProduct);  </div><div class="line">   res.statusCode = 201;  </div><div class="line">   res.location(&apos;/products/&apos; + products.length);  </div><div class="line">   res.json(true);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/04/06/Node-js-webapi/" data-id="cj6wyl69x0008jizo82n1nxhz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/05/gcd学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          gcd学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/06/Net推送证书制作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">.Net推送证书制作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

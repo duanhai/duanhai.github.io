@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dispatch Semaphore &amp; NSCondition | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="dispatch_semaphore 使用 http://www.cnblogs.com/snailHL/p/3906112.html  两个作用 加锁/数据同步   dispatch_semaphore_create   dispatch_semaphore_signal   dispatch_semaphore_wait  123- (void)methodWithABlock:(DHBLK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dispatch Semaphore &amp; NSCondition">
+<meta property="og:url" content="/2017/05/22/NSCondition/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="dispatch_semaphore 使用 http://www.cnblogs.com/snailHL/p/3906112.html  两个作用 加锁/数据同步   dispatch_semaphore_create   dispatch_semaphore_signal   dispatch_semaphore_wait  123- (void)methodWithABlock:(DHBLK">
+<meta property="og:updated_time" content="2017-05-22T08:46:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dispatch Semaphore &amp; NSCondition">
+<meta name="twitter:description" content="dispatch_semaphore 使用 http://www.cnblogs.com/snailHL/p/3906112.html  两个作用 加锁/数据同步   dispatch_semaphore_create   dispatch_semaphore_signal   dispatch_semaphore_wait  123- (void)methodWithABlock:(DHBLK">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-NSCondition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/22/NSCondition/" class="article-date">
+  <time datetime="2017-05-22T07:56:05.000Z" itemprop="datePublished">2017-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dispatch Semaphore &amp; NSCondition
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>dispatch_semaphore 使用 <a href="http://www.cnblogs.com/snailHL/p/3906112.html" target="_blank" rel="external">http://www.cnblogs.com/snailHL/p/3906112.html</a></p>
+</blockquote>
+<h3 id="两个作用"><a href="#两个作用" class="headerlink" title="两个作用"></a>两个作用</h3><p><strong><em> 加锁/数据同步 </em></strong></p>
+<p><strong> dispatch_semaphore_create </strong></p>
+<p><strong> dispatch_semaphore_signal </strong></p>
+<p><strong> dispatch_semaphore_wait </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)methodWithABlock:(DHBLK)blk&#123;</div><div class="line">    blk(@&quot;hahaha&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 测试代码1 单个block</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_t sem = dispatch_semaphore_create(0);      </div><div class="line">[self methodWithABlock:^(id result)&#123;</div><div class="line">    //写block中做的事情</div><div class="line">    //结束等待</div><div class="line">    dispatch_semaphore_signal(sem);</div><div class="line">&#125;];</div><div class="line">//等待信号</div><div class="line">dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div></pre></td></tr></table></figure>
+<p>测试代码2 多个 blcok</p>
+<p>xxx.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_t sem = dispatch_semaphore_create(0);</div><div class="line"></div><div class="line">   [self methodWithABlock:^(id result)&#123;</div><div class="line">       //写block中做的事情</div><div class="line">       dispatch_semaphore_signal(sem);</div><div class="line">       [self methodWithABlock:^(id result)&#123;</div><div class="line">           //写block中做的事情</div><div class="line">           dispatch_semaphore_signal(sem);</div><div class="line">       &#125;];</div><div class="line">   &#125;];</div><div class="line"></div><div class="line">   dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div><div class="line"></div><div class="line">   dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div></pre></td></tr></table></figure>
+<p>测试代码3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t queue = dispatch_get_global_queue(0, 0);</div><div class="line">dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</div><div class="line"></div><div class="line">__block int j = 0;</div><div class="line">dispatch_async(queue, ^&#123;</div><div class="line">    j = 100;</div><div class="line">    dispatch_semaphore_signal(semaphore);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">NSLog(@&quot;%d&quot;,j);</div><div class="line">// j = 100</div></pre></td></tr></table></figure>
+<p>测试代码 4 加锁测试 ,反注释掉//<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">      dispatch_async(queue, ^&#123;</div><div class="line">          // 相当于加锁</div><div class="line">//            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">          NSLog(@&quot;i = %zd semaphore = %@&quot;, i, semaphore);</div><div class="line">          // 相当于解锁</div><div class="line">//            dispatch_semaphore_signal(semaphore);</div><div class="line">      &#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="NSCondition-的使用"><a href="#NSCondition-的使用" class="headerlink" title="NSCondition 的使用"></a>NSCondition 的使用</h3><blockquote>
+<p>NSCondition 的对象实际上作为一个锁和一个线程检查器：锁主要为了当检测条件时保护数据源，执行条件引发的任务；线程检查器主要是根据条件决定是否继续运行线程，即线程是否被阻塞。<br><a href="http://www.jianshu.com/p/5d20c15ae690" target="_blank" rel="external">http://www.jianshu.com/p/5d20c15ae690</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">NSCondition *condition = [[NSCondition alloc] init];</div><div class="line">__block NSMutableArray *products = [[NSMutableArray alloc] initWithCapacity:10];</div><div class="line"></div><div class="line"></div><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">    [condition lock];</div><div class="line">    while ([products count] == 0) &#123;</div><div class="line">        NSLog(@&quot;wait for products &quot;);</div><div class="line">        [condition wait];</div><div class="line">    &#125;</div><div class="line">    [products removeObjectAtIndex:0];</div><div class="line">    NSLog(@&quot;custome a product&quot;);</div><div class="line"></div><div class="line">    [condition unlock];</div><div class="line">&#125;);</div><div class="line"></div><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line"></div><div class="line">    [condition lock];</div><div class="line"></div><div class="line">    products = [NSMutableArray array];</div><div class="line">    [products addObject:@&quot;oo&quot;];</div><div class="line">    NSLog(@&quot;produce a obj&quot;);</div><div class="line"></div><div class="line">    [condition signal];</div><div class="line">    [condition unlock];</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 异步下载图片完成后同步完成数据库再通知UI刷新的机制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">- (void)receiveMessage:(MessageEntity *)message</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSCondition *condition = [[NSCondition alloc]init];</div><div class="line"></div><div class="line">    [condition lock];</div><div class="line"></div><div class="line">    NSInteger imageCount ;</div><div class="line"></div><div class="line">    void(^unlock)=^()&#123;</div><div class="line"></div><div class="line">        while(!imageCount)</div><div class="line"></div><div class="line">            [condition signal];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    imageCount++;</div><div class="line"></div><div class="line">dowanloadImageFinished:^(UIImage *image)&#123; //异步下载图片，下载完成的回调中</div><div class="line"></div><div class="line">    imageCount--;</div><div class="line"></div><div class="line">    unlock();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">    while(imageCount)&#123;</div><div class="line"></div><div class="line">        [condition wait];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [condition unLock];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="以GPUImage-实现的延时摄影"><a href="#以GPUImage-实现的延时摄影" class="headerlink" title="以GPUImage 实现的延时摄影"></a>以GPUImage 实现的延时摄影</h5><p> 用 semaphore 来筛选(关断)出时间间隔的图像 buffter.筛选出来的buffer 再筛入 WriterInputPixelBufferAdaptor.</p>
+<p><strong>     <a href="https://github.com/yangfangxue/GPUImageRecord.git" target="_blank" rel="external">https://github.com/yangfangxue/GPUImageRecord.git</a>
+ </strong></p>
+<p> <strong> 1.dispatch timer 的用法 </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">__weak typeof(self) ws =self;</div><div class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);</div><div class="line">_timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);</div><div class="line">dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 0.5 * NSEC_PER_SEC, 0);</div><div class="line"></div><div class="line">dispatch_source_set_event_handler(_timer, ^&#123;</div><div class="line">    [ws defaultTimerHandel];</div><div class="line">&#125;);</div><div class="line"></div><div class="line">_seam = dispatch_semaphore_create(0);</div></pre></td></tr></table></figure>
+<p>//使用 timer 和销毁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_resume(_timer);</div><div class="line"></div><div class="line">dispatch_cancel(_timer);</div></pre></td></tr></table></figure></p>
+<p><strong> GPUImageVideoCamera 中回调方法CMSampleBufferRef的 lock </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[_camera addTarget:self.preview];</div><div class="line">//获取buffer</div><div class="line">     CVPixelBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);</div><div class="line">     CVPixelBufferLockBaseAddress(imageBuffer, 0);</div><div class="line"></div><div class="line">     _imageBuffer =  CVPixelBufferRetain(imageBuffer);</div><div class="line">     CVPixelBufferUnlockBaseAddress(imageBuffer, 0);</div></pre></td></tr></table></figure>
+<p><strong> 录制配置路径的时候需要检测是否存在,清除历史文件</strong></p>
+<p><strong> 完成录制时候加入condition 保护</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[writerInput markAsFinished];</div><div class="line">if(videoWriter.status == AVAssetWriterStatusWriting)&#123;</div><div class="line">    NSCondition *cond = [[NSCondition alloc] init];</div><div class="line">    [cond lock];</div><div class="line">    [videoWriter finishWritingWithCompletionHandler:^&#123;</div><div class="line">        [cond lock];</div><div class="line">        [cond signal];</div><div class="line">        [cond unlock];</div><div class="line">    &#125;];</div><div class="line">    [cond wait];</div><div class="line">    [cond unlock];</div><div class="line"></div><div class="line">    [self savePhotoCmare:self.url];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2017/05/22/NSCondition/" data-id="cj6wyl69u0006jizo8hshvmcg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/kiwiDoc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          kiwiDoc
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/03/04-2016/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">04/2016</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

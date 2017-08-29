@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gcd学习 | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GCDQueueGCD有三种queue.    main queue: 主线程队列。是一个串行队列。一般用来更新UI。 global queue: 全局队列，是一个并行队列。使用方法相信大家都知道。    123dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&amp;#123;        [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gcd学习">
+<meta property="og:url" content="/2016/07/05/gcd学习/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="GCDQueueGCD有三种queue.    main queue: 主线程队列。是一个串行队列。一般用来更新UI。 global queue: 全局队列，是一个并行队列。使用方法相信大家都知道。    123dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&amp;#123;        [">
+<meta property="og:image" content="https://cdn1.raywenderlich.com/wp-content/uploads/2014/01/Dispatch-Barrier.png">
+<meta property="og:updated_time" content="2017-05-22T07:51:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gcd学习">
+<meta name="twitter:description" content="GCDQueueGCD有三种queue.    main queue: 主线程队列。是一个串行队列。一般用来更新UI。 global queue: 全局队列，是一个并行队列。使用方法相信大家都知道。    123dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&amp;#123;        [">
+<meta name="twitter:image" content="https://cdn1.raywenderlich.com/wp-content/uploads/2014/01/Dispatch-Barrier.png">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gcd学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/05/gcd学习/" class="article-date">
+  <time datetime="2016-07-05T05:47:54.000Z" itemprop="datePublished">2016-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gcd学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h1><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>GCD有三种queue.  </p>
+<ul>
+<li>main queue: 主线程队列。是一个串行队列。一般用来更新UI。</li>
+<li>global queue: 全局队列，是一个并行队列。使用方法相信大家都知道。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        [self dosomething];</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>上面的意思就是开启一个异步线程，在全局队列中执行。  </p>
+<ul>
+<li>custom queue:自定义队列。有两种自定义队列。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t serial_queue = dispatch_queue_create(&quot;com.reviewcode.www&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line">dispatch_queue_t concurrent_queue = dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
+<p><code>serial_queue</code>即是我自定义的一个串行队列。上面提到的主线程队列也是一个串行队列。<br><code>concurrent_queue</code>是我自定义的一个并行队列。上面提到的global queue就是一个并行队列。<br>现在我们来讨论2个问题。</p>
+<ol>
+<li><code>dispatch_async</code>里使用串行队列和并行队列的效果。  </li>
+<li><code>dispatch_sync</code>里使用串行队列和并行队列的效果。<br>串行队列和并行队列的创建如下。  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">serial_queue = dispatch_queue_create(&quot;com.reviewcode.www&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line">concurrent_queue = dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
+<h3 id="讨论的问题"><a href="#讨论的问题" class="headerlink" title="讨论的问题"></a>讨论的问题</h3><h4 id="在dispatch-async使用串行队列"><a href="#在dispatch-async使用串行队列" class="headerlink" title="在dispatch_async使用串行队列"></a>在dispatch_async使用串行队列</h4><p>看代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (void)testSerialQueueWithAsync</div><div class="line">&#123;</div><div class="line">    for (int index = 0; index &lt; 10; index++) &#123;</div><div class="line">        dispatch_async(serial_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在<code>viewDidLoad()</code>方法里打印。打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">Running on main Thread</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>打印结果的几个特征。  </p>
+<ol>
+<li>在dispatch_async使用的所有Thread均为同一个Thread。因为他们的指针地址完全相同。  </li>
+<li>输出结果是按顺序输出，符合我们对串行队列的期待。即FIFO。先进先出原则。 </li>
+<li><code>Running on main Thread</code>这句话并没有在最后执行，而是会出现在随机的位置，这也符合我们对dispatch_async的期待，因为他会开辟一个新的线程执行，不会阻塞主线程。<br>ok，让我们测试下一个。  </li>
+</ol>
+<h4 id="在dispatch-async中使用并行队列"><a href="#在dispatch-async中使用并行队列" class="headerlink" title="在dispatch_async中使用并行队列"></a>在dispatch_async中使用并行队列</h4><p>看代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)testConcurrentQueueWithAsync &#123;</div><div class="line">    for (int index =0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 1</div><div class="line">index = 5</div><div class="line">Running on main Thread</div><div class="line">index = 2</div><div class="line">index = 6</div><div class="line">index = 7</div><div class="line">index = 3</div><div class="line">index = 0</div><div class="line">index = 8</div><div class="line">index = 4</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fded2a17e20&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1508e40&gt;&#123;number = 3, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded290d6e0&gt;&#123;number = 5, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2a17e60&gt;&#123;number = 4, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1510470&gt;&#123;number = 8, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded17050f0&gt;&#123;number = 6, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1704b30&gt;&#123;number = 10, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2806fe0&gt;&#123;number = 7, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2900e10&gt;&#123;number = 9, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2b01060&gt;&#123;number = 11, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>打印结果的特征如下：  </p>
+<ol>
+<li>输出的结果是乱序的，说明我们的输出语句是并发的，由多个线程共同执行的。  </li>
+<li><code>Running on main Thread</code>这句话依然没有被阻塞，直接输出了。  </li>
+<li>每次打印语句的Thread均不相同。  </li>
+</ol>
+<p>仔细比对两次打印结果的异同点。提出问题。  </p>
+<ol>
+<li>串行队列如何保证在异步线程中遵守先进先出原则（从Demo里看，也就是顺序打印我们的结果）？<br>很简单，它会保证每次dispatch_async开辟线程执行串行队列中的任务时，总是使用同一个异步线程。这也是为什么我们的第一次打印结果中，NSThread总是同一个。  </li>
+<li>在dispatch_async中放入并行队列并执行的时候，为什么执行顺序总是乱序的？<br>因为在并行对列中，每执行一次任务的时候，dispatch_async总会为我们开辟一个新的线程（当然，开辟线程的总量是有限制的，你可以试试循环一万次并打印Thread信息）来执行任务，所以不同线程开始结束的时间都不一样，导致了结果是乱序的。  </li>
+</ol>
+<h4 id="在dispatch-sync中使用串行队列"><a href="#在dispatch-sync中使用串行队列" class="headerlink" title="在dispatch_sync中使用串行队列"></a>在dispatch_sync中使用串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (void)testSerialQueueWithSync</div><div class="line">&#123;</div><div class="line">    for (int index =0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_sync(serial_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on main Thread</div></pre></td></tr></table></figure>
+<ol>
+<li>dispatch_sync并没有开辟一个新的线程，直接在当前线程中执行代码（即main线程）。所以会阻塞当前线程。</li>
+<li>Running on main Thread在最后输出。  </li>
+</ol>
+<p>也就是说，当使用dispatch_sync执行串行队列的任务时，不会开辟新的线程，会直接使用当前线程执行队列中的任务。  </p>
+<h4 id="在dispatch-sync中使用并行队列"><a href="#在dispatch-sync中使用并行队列" class="headerlink" title="在dispatch_sync中使用并行队列"></a>在dispatch_sync中使用并行队列</h4><p>代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)testConcurrentQueueWithSync &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        </div><div class="line">        dispatch_sync(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            </div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on main Thread</div></pre></td></tr></table></figure>
+<p>结果很奇怪，和在串行队列执行的效果一模一样。按我们的思考，并行队列里执行任务不应该是多个线程同时跑么？其实是由于dispatch_sync并不会开辟新的线程执行任务，所以导致了执行并行队列任务的线程总会是一个线程，自然，结果是一样的。  </p>
+<h2 id="dispatch-barrier"><a href="#dispatch-barrier" class="headerlink" title="dispatch_barrier"></a>dispatch_barrier</h2><p>讲完了GCD最基本的用法。我们来看看一个不太常用的GCD。<code>dispatch_barrier</code>。<br>这个barrier我感觉使用霸道总裁来形容比较合适。这里借用raywenderlich上介绍barrier的一张图。<br><img src="https://cdn1.raywenderlich.com/wp-content/uploads/2014/01/Dispatch-Barrier.png" alt=""><br>看的有点懵逼？<br>不要紧。我来解释一下。<br>首先，在一个并行队列中，有多个线程在执行多个任务，在这个并行队列中，有一个dispatch_barrier任务。这样会有一个什么效果呢？<br>就是，所有在这个dispatch_barrier之后的任务总会等待barrier之前的所有任务结束之后，才会执行。那么细心的同学可能会发现这里有个问题，既然所有在barrier之后的任务都会等待在barrier之前的任务结束之后执行，那么barrier本身执行是否会阻塞当前线程？<br>所以，dispatch_barrier也是有两个方法的。<code>dispatch_barrier_sync</code>和<code>dispatch_barrier_async</code>.  </p>
+<h3 id="dispatch-barrier-sync"><a href="#dispatch-barrier-sync" class="headerlink" title="dispatch_barrier_sync"></a>dispatch_barrier_sync</h3><p>还是看代码理解的更快一点。代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)testBarrierSyncWithConCurrentQueue &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (int j = 0; j&lt;10000; j++) &#123;</div><div class="line">        dispatch_barrier_sync(concurrent_queue, ^&#123;</div><div class="line">            if (j == 10000-1) &#123;</div><div class="line">                NSLog(@&quot;barrier Finished&quot;);</div><div class="line">                NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on Main Thread&quot;);</div><div class="line">    </div><div class="line">    for (int index =10; index&lt;20; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么运行之后我们的输出结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">index = 2</div><div class="line">index = 7</div><div class="line">index = 0</div><div class="line">index = 1</div><div class="line">index = 3</div><div class="line">index = 4</div><div class="line">index = 5</div><div class="line">index = 8</div><div class="line">index = 6</div><div class="line">index = 9</div><div class="line">barrier Finished</div><div class="line">current thread is &lt;NSThread: 0x7fa81bd08050&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on Main Thread</div><div class="line">index = 10</div><div class="line">index = 11</div><div class="line">index = 12</div><div class="line">index = 13</div><div class="line">index = 14</div><div class="line">index = 15</div><div class="line">index = 16</div><div class="line">index = 17</div><div class="line">index = 18</div><div class="line">index = 19</div></pre></td></tr></table></figure>
+<p>ok，总结一下。  </p>
+<ol>
+<li><code>dispatch_barrier_sync</code>确实是会在队列中充当一个栅栏的作用，凡是在他之后进入队列的任务，总会在<code>dispatch_barrier_sync</code>之前的所有任务执行完毕之后才执行。  </li>
+<li>见名知意，<code>dispatch_barrier_sync</code>是会在主线程执行队列中的任务的，所以，<code>Running on Main Thread</code>这句话会被阻塞，从而在barrier之后执行。  </li>
+</ol>
+<h3 id="dispatch-barrier-async"><a href="#dispatch-barrier-async" class="headerlink" title="dispatch_barrier_async"></a>dispatch_barrier_async</h3><p>那么我们再看看<code>dispatch_barrier_async</code>执行的效果。<br>代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)testBarrierAsyncWithConCurrentQueue &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            MyLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (int j = 0; j&lt;10000000; j++) &#123;</div><div class="line">        dispatch_barrier_async(concurrent_queue, ^&#123;</div><div class="line">            if (j == 10000000-1) &#123;</div><div class="line">                MyLog(@&quot;barrier Finished&quot;);</div><div class="line">                MyLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    MyLog(@&quot;Running on Main Thread&quot;);</div><div class="line">    </div><div class="line">    for (int index =10; index&lt;20; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            MyLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实结果不难猜到。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">index = 1</div><div class="line">index = 0</div><div class="line">index = 4</div><div class="line">index = 2</div><div class="line">index = 3</div><div class="line">index = 8</div><div class="line">index = 9</div><div class="line">index = 7</div><div class="line">index = 5</div><div class="line">index = 6</div><div class="line">Running on Main Thread</div><div class="line">barrier Finished</div><div class="line">current thread is &lt;NSThread: 0x7f9b0b6023c0&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 11</div><div class="line">index = 13</div><div class="line">index = 14</div><div class="line">index = 10</div><div class="line">index = 15</div><div class="line">index = 17</div><div class="line">index = 16</div><div class="line">index = 12</div><div class="line">index = 18</div><div class="line">index = 19</div></pre></td></tr></table></figure>
+<p><code>dispatch_barrier_async</code>会开辟一条新的线程执行其中的任务，所以不会阻塞当前线程。其他的功能和<code>dispatch_barrier_sync</code>相同。  </p>
+<h3 id="几个小问题"><a href="#几个小问题" class="headerlink" title="几个小问题"></a>几个小问题</h3><ol>
+<li><p>为什么我们只举了barrier和并行队列的例子，而没有举barrier和串行队列的例子？<br>因为，barrier和串行队列配合是完全没有意义的。barrier的目的是什么？目的是为了在某种情况下，同一个队列中一些并发任务必须在另一些并发任务之后执行，所以需要一个类似于拦截的功能，迫使后执行的任务必须等待。那么，串行队列中的所有任务本身就是按照顺序执行的，那么又有什么必要使用拦截的功能呢？  </p>
+</li>
+<li><p>在global queue中使用barrier没有意义，为什么？<br>barrier实现的基本条件是，要写在同一队列中。举个例子，你现在创建了两个并行队列，你在其中一个队列中插入了一个barrier任务，那么你不可能期待他可以在第二个队列中生效，对吧。同样的，每一次使用global queue，系统分配给你的可能是不同的并行队列，你在其中插入一个barrier任务，又有什么意义呢？</p>
+</li>
+</ol>
+<h2 id="该做点什么了"><a href="#该做点什么了" class="headerlink" title="该做点什么了"></a>该做点什么了</h2><h4 id="思考一个问题，NSMutableDictionary是否是线程安全的？"><a href="#思考一个问题，NSMutableDictionary是否是线程安全的？" class="headerlink" title="思考一个问题，NSMutableDictionary是否是线程安全的？"></a>思考一个问题，NSMutableDictionary是否是线程安全的？</h4><p>做个测试好了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (void)testMutableDictionaryThreadSafe &#123;</div><div class="line">    dispatch_semaphore_t sema = dispatch_semaphore_create(0);</div><div class="line">    dispatch_async(concurrent_queue, ^&#123;</div><div class="line">        for (int index = 0; index&lt;1000 ; index++) &#123;</div><div class="line">            dict[@(index)] = @(index);</div><div class="line">        &#125;</div><div class="line">        dispatch_semaphore_signal(sema);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_async(concurrent_queue, ^&#123;</div><div class="line">        for (int index = 0; index&lt;1000 ; index++) &#123;</div><div class="line">            dict[@(index)] = @(0);</div><div class="line">        &#125;</div><div class="line">        dispatch_semaphore_signal(sema);</div><div class="line">    &#125;);</div><div class="line">    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);</div><div class="line">    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);</div><div class="line">    </div><div class="line">    NSLog(@&quot;dict is %@&quot;, dict);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是，直接崩了。。<br>因为<code>NSMutableDictionary</code>不是线程安全的，任意一个线程在往字典里写入数据的时候是不允许有其他线程访问的，不管是读或者写都不可以。<br>所以，现在的任务就是，我们需要使用gcd来实现一个线程安全的NSMutableDictionary。  </p>
+<h4 id="第一个方案，serial-queue-dispatch-async"><a href="#第一个方案，serial-queue-dispatch-async" class="headerlink" title="第一个方案，serial queue + dispatch_async"></a>第一个方案，serial queue + dispatch_async</h4><p>首先，串行队列能保证每一个读或者写操作都是按顺序执行的，并且会在同一个线程执行任务，dispatch_async又能保证读写操作均能在异步线程执行，所以不会卡当前线程。所以表面上看是没问题的。<br>关键的问题是，太慢了,因为你每次只会有一个线程读或者写。如果同时有一百个读的请求，那么你的数据必须要按照顺序，一个一个的读出来。所以这个方案行不通。  </p>
+<h4 id="第二个方案，concurrent-queue-dispatch-async"><a href="#第二个方案，concurrent-queue-dispatch-async" class="headerlink" title="第二个方案，concurrent queue + dispatch_async"></a>第二个方案，concurrent queue + dispatch_async</h4><p>用这个方案意味着，我们可以多线程同时读取字典里的数据。但是我们得确保一个条件。我们读取字典数据的时候，必须保证没有别的线程在写。<br>所以，确定读取线程安全的条件变成了，如何迫使写的这个操作在同一时刻，只有一个线程在写，并且，没有其他线程读或者写。那么，当然可以用dispatch_barrier_async来实现我们的需求了。<br>为什么dispatch_barrier_async可以实现我们的需求？<br>想一下dispatch_barrier_async的几个特性。<br> 同一个队列中，只要插入了一个barrier，那么在他之后的所有任务都必须等他完成了才可以继续。所以，只要我们保证所有写操作都在barrier里完成，那么，我们不可能在一个concurrent queue里同时有多个线程在往字典里写数据。因为假如有多个写的操作，每一个写操作总会等待前一个写操作完成之后才执行。<br>所以代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">typedef void (^ThreadSafeDictionaryBlock)(ThreadSafeDictionary *dict, NSString *key, id object);</div><div class="line"></div><div class="line">@interface ThreadSafeDictionary ()</div><div class="line">&#123;</div><div class="line">    dispatch_queue_t concurrentQueue;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ThreadSafeDictionary</div><div class="line"></div><div class="line">- (id)init</div><div class="line">&#123;</div><div class="line">    if (self = [super init]) &#123;</div><div class="line">        concurrentQueue = dispatch_queue_create(&quot;www.reviewcode.cn&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)objectForKey:(id)aKey block:(ThreadSafeDictionaryBlock)block</div><div class="line">&#123;</div><div class="line">    id key = [aKey copy];</div><div class="line">    __weak __typeof__(self) weakSelf = self;</div><div class="line">    dispatch_async(concurrentQueue, ^&#123;</div><div class="line">        ThreadSafeDictionary *strongSelf = weakSelf;</div><div class="line">        if (!strongSelf)</div><div class="line">            return;</div><div class="line">        id object = [self objectForKey:key];</div><div class="line">        block(self, key, object);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setObject:(id)object forKey:(NSString *)key block:(ThreadSafeDictionaryBlock)block</div><div class="line">&#123;</div><div class="line">    if (!key || !object)</div><div class="line">        return;</div><div class="line">    </div><div class="line">    NSString *akey = [key copy];</div><div class="line">    __weak ThreadSafeDictionary *weakSelf = self;</div><div class="line">    </div><div class="line">    dispatch_barrier_async(concurrentQueue, ^&#123;</div><div class="line">        __strong typeof(weakSelf)strongSelf = weakSelf;;</div><div class="line">        if (!strongSelf)</div><div class="line">            return;</div><div class="line">        [self setObject:object forKey:akey];</div><div class="line">     </div><div class="line">        if (block) &#123;</div><div class="line">            block(strongSelf, akey, object);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>这里可能会有人存疑，外部用<code>__weak</code>关键在声明weakSelf这个没什么问题，防止retain cycle。但里面为什么又用<code>__strong</code>声明了一个strongSelf？</p>
+<p>这是因为，你享受了weak的好处，同时也要承担风险，由于不持有这个weakSelf，所以你无法保证在代码运行过程中，self不会被释放。</p>
+<p>那可能又有人问了，你在外部用weak声明的原因是防止retain cycle，结果又在里面声明了一个strong，那不相当于做无用功了么。但问题是，在block内部声明的strongSelf是局部变量，他的生命周期只是在block内而已，当block执行完它自动就被销毁了。所以不会造成retain cycle。</p>
+<p>还有一个问题，如果在第一句<code>__strong typeof(weakSelf)strongSelf = weakSelf;</code>的时候weakSelf已经被销毁了怎么办？</p>
+<p>你没看我下面有个<code>if(！strongSelf)</code>么？不就是应对这种情况的。</p>
+<h2 id="dispatch-semaphore"><a href="#dispatch-semaphore" class="headerlink" title="dispatch_semaphore"></a>dispatch_semaphore</h2><p>信号量。<br>信号量的用法相当简单。<br>一共有三个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_create =&gt; 创建一个信号量</div><div class="line">dispatch_semaphore_signal =&gt; 发送一个信号</div><div class="line">dispatch_semaphore_wait =&gt; 等待信号</div></pre></td></tr></table></figure>
+<p>dispatch_semaphore的使用场景是处理并发控制。<br>如果感觉不是很明白的话，想想<code>NSOperationQueue</code>的一个属性，<code>maxConcurrentOperationCount</code>.这个属性的意思就是设定NSOperationQueue里的NSOperation同时运行的最大数量。</p>
+<p>我们的信号量也可以实现同样的功能。<br>首先，创建一个信号量。<br><code>dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</code><br>创建方法里会传入一个long型的参数，这个东西你可以想象是一个库存。有了库存才可以出货。<br><code>dispatch_semaphore_wait</code>，就是每运行一次，会先清一个库存，如果库存为0，那么根据传入的等待时间，决定等待增加库存的时间，如果设置为DISPATCH_TIME_FOREVER,那么意思就是永久等待增加库存，否则就永远不往下面走。<br><code>dispatch_semaphore_signal</code>，就是每运行一次，增加一个库存。<br>那么下面的代码运行起来会是怎样的结果呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</div><div class="line">    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">    NSLog(@&quot;等待semaphore&quot;);</div></pre></td></tr></table></figure>
+<p>结果就是，<code>等待semaphore</code>这句话永远不会输出。原因有两个。</p>
+<ol>
+<li>你初始化信号量的时候，并没有库存，也就是你传入的值是0.</li>
+<li>你传入等待增加库存的时间是<code>DISPATCH_TIME_FOREVER</code>，也就是说，除非有地方运行了<code>dispatch_semaphore_signal</code>增加了库存，否则我永远等待下去。<br>基于上述的两个原因，导致了程序不往下走了。</li>
+</ol>
+<p>所以，其实这样的特性可以帮助我们完成一个功能，测试异步网络请求是否成功。<br>比如，在以前写Unit Test测试网络请求的时候，我们常常这么写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (void)downloadImageURLWithString:(NSString *)URLString</div><div class="line">&#123;</div><div class="line">    // 1</div><div class="line">    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</div><div class="line"> </div><div class="line">    NSURL *url = [NSURL URLWithString:URLString];</div><div class="line">    __unused Photo *photo = [[Photo alloc]</div><div class="line">                             initwithURL:url</div><div class="line">                             withCompletionBlock:^(UIImage *image, NSError *error) &#123;</div><div class="line">                                 if (error) &#123;</div><div class="line">                                     XCTFail(@&quot;%@ failed. %@&quot;, URLString, error);</div><div class="line">                                 &#125;</div><div class="line"> </div><div class="line">                                 // 2</div><div class="line">                                 dispatch_semaphore_signal(semaphore);</div><div class="line">                             &#125;];</div><div class="line"> </div><div class="line">    // 3</div><div class="line">    dispatch_time_t timeoutTime = dispatch_time(DISPATCH_TIME_NOW, 5);</div><div class="line">    if (dispatch_semaphore_wait(semaphore, timeoutTime)) &#123;</div><div class="line">        XCTFail(@&quot;%@ timed out&quot;, URLString);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解释一下。</p>
+<ol>
+<li>我们创建了一个信号量，并且传入的参数为0，可以想象现在是0库存.</li>
+<li>开启了一个异步线程下载网络数据，在回调的block中判断error是否为nil。如果为nil，直接使用<code>XCTFail</code>，报错。如果成功了。那么增加一个库存，告诉信号量，好了，现在有库存了。你可以继续运货了。</li>
+<li>设置一个超时时间，5秒钟，这个是干嘛的呢？这个是告诉信号量，我等待库存增加的时间只有5秒钟，如果超过了五秒钟，我就报错。怎么判断是否超过5秒钟呢？<code>dispatch_semaphore_wait(semaphore, timeoutTime)</code> ，如果超过了5秒钟，那么这个方法会返回一个非0的长整型。</li>
+</ol>
+<p>这样，我们就可以给一个网络接口写单元测试了。</p>
+<p>上文我们提到过，信号量的主要功能还是控制并发量，可以实现类似于NSOperationQueue的功能。那么我现在尝试实现一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@implementation CustomOperationQueue</div><div class="line"></div><div class="line">- (id)initWithConcurrentCount:(int)count</div><div class="line">&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self)</div><div class="line">    &#123;</div><div class="line">        if (count &lt; 1) count = 5;</div><div class="line">        semaphore = dispatch_semaphore_create(count);</div><div class="line">        queue = Dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)init</div><div class="line">&#123;</div><div class="line">    return [self initWithConcurrentCount:5];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)addTask:(CallBackBlock)block</div><div class="line">&#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 0), ^&#123;</div><div class="line">            block();</div><div class="line">            dispatch_semaphore_signal(semaphore);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>我们把注意力放在<code>- (void)addTask:(CallBackBlock)block</code>这个方法里。</p>
+<ol>
+<li>我们创建了一个初始库存是5的一个信号量</li>
+<li>在addTask方法里，由于我们的初始库存是5，所以第一次添加了一个任务之后，<code>dispatch_semaphore_wait</code>会直接放行，并减少一个库存，所以现在库存是4，然后，每当我们完成一个任务，也就意味着，我们可以把库存还回去了。所以就会调用<code>dispatch_semaphore_signal</code>去增加一个库存。</li>
+<li>那么，如果我们的每一个任务耗时都相当长，所以我们是一直消耗库存但是没有还回库存，所以当添加到第6个任务的时候，这个时候由于库存已经为0，所以wait方法会一直等待，不执行第六个任务，直到有前面的任务完成，库存大于0，这时候才会执行第六个任务。</li>
+</ol>
+<p>这样，我们就完成了并发量的控制。</p>
+<h2 id="dispatch-group"><a href="#dispatch-group" class="headerlink" title="dispatch_group"></a>dispatch_group</h2><p>直接看代码  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">dispatch_group_t serviceGroup = dispatch_group_create();</div><div class="line"></div><div class="line">// 开始第一个请求</div><div class="line">// 进入组</div><div class="line">dispatch_group_enter(serviceGroup);</div><div class="line">[self.configService startWithCompletion:^(ConfigResponse *results, NSError* error)&#123;</div><div class="line">    configError = error;</div><div class="line">    // 离开组</div><div class="line">    dispatch_group_leave(serviceGroup);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 开始第二个请求</div><div class="line">// 先进入组</div><div class="line">dispatch_group_enter(serviceGroup);</div><div class="line">[self.preferenceService startWithCompletion:^(PreferenceResponse *results, NSError* error)&#123;</div><div class="line">    // 离开组</div><div class="line">    preferenceError = error;</div><div class="line">    dispatch_group_leave(serviceGroup);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 当小组里的任务都清空以后，通知主线程完成了所有任务</div><div class="line">dispatch_group_notify(serviceGroup,dispatch_get_main_queue(),^&#123;</div><div class="line">    // Assess any errors</div><div class="line">    NSError *overallError = nil;</div><div class="line">    if (configError || preferenceError)</div><div class="line">    &#123;</div><div class="line">        // Either make a new error or assign one of them to the overall error</div><div class="line">        overallError = configError ?: preferenceError;</div><div class="line">    &#125;</div><div class="line">    // Now call the final completion block</div><div class="line">    completion(overallError);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个<code>dispatch_group</code>最常见的功能就是，一个页面有多个异步网络请求，如何监测所有任务都完成了。<br>这个方法相信大家都会用。<br>那么需要注意的是。这里的网络请求回调只有一个block，所以无论请求出错还是成功了，只需要写一次<code>dispatch_group_leave</code>,但是如果你的回调block有两个，分成功的回调和错误的回调，那么你必须在两个block里都写<code>disptach_group_leave</code>,因为你不知道你的请求到底会走成功的block还是失败的block，如果少写了，一旦某个请求失败了，那么你的notify方法就永远也不会执行了。<br>p.s.如有侵权请告诉我</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/07/05/gcd学习/" data-id="cj6wyl6a0000ajizo0g8dkfdg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/20/Discover相关文档/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Discover相关笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/06/Node-js-webapi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Node.js webapi</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

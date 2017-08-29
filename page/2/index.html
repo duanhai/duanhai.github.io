@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="swift联盟一员">
+<meta property="og:url" content="/page/2/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="swift联盟一员">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-swift01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/01/swift01/" class="article-date">
+  <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/swift01/">swift学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  SwiftTips.swift</div><div class="line">//  SwiftSum</div><div class="line">//</div><div class="line">//  Created by yangyuan on 2016/10/5.</div><div class="line">//  Copyright © 2016年 huan. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">import UIKit</div><div class="line"></div><div class="line">// MARK: - 让人眼前一亮的初始化方式</div><div class="line">//参考链接http://swift.gg/2016/09/23/swift-configuring-a-constant-using-shorthand-argument-names/</div><div class="line">class Initss &#123;</div><div class="line">    </div><div class="line">    /*</div><div class="line">     声明常量后，在一个紧接着的闭包中进行初始化，而不是之后在 viewDidLoad 或其他类似的方法中进行设置，这在 Swift 中是很常见的写法（也确实是一种不错的写法！）。</div><div class="line">     </div><div class="line">     但是觉得在闭包中多命名一个 UIView 很难看，上面代码中有 purpleView 和 view 两个 UIView 实例，那么 view 是不是应该命名成 purpleView</div><div class="line">     */</div><div class="line">    let purpleView: UIView = &#123;</div><div class="line">        // 在此初始化 view</div><div class="line">        // 直接叫 &quot;view&quot; 真的好吗？</div><div class="line">        let view = UIView()</div><div class="line">        view.backgroundColor = .purple</div><div class="line">        return view</div><div class="line">    &#125;()</div><div class="line">    </div><div class="line">    // MARK: - 用位置参数（positional references）来初始化 Swift 常量</div><div class="line">    let yellowView: UIView = &#123;</div><div class="line">        $0.backgroundColor = .yellow</div><div class="line">        return $0</div><div class="line">        // 确保下一行的括号内要传入 UIView()</div><div class="line">    &#125;(UIView())</div><div class="line">    </div><div class="line">    // MARK: - 有个叫 Then 的库更赞，能够写出可读性更好的代码：</div><div class="line">    let lable = UILabel().then &#123;</div><div class="line">        $0.textColor = .black</div><div class="line">        $0.text = &quot;Hello, World!&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public protocol Then &#123;&#125;</div><div class="line">extension Then where Self: Any &#123;</div><div class="line">    public func then(_ block: (inout Self) -&gt; Void) -&gt; Self &#123;</div><div class="line">        var copy = self</div><div class="line">        block(&amp;copy)</div><div class="line">        return copy</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">extension Then where Self: AnyObject &#123;</div><div class="line">    public func then(_ block: (Self) -&gt; Void) -&gt; Self &#123;</div><div class="line">        block(self)</div><div class="line">        return self</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">extension NSObject: Then&#123;&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2017/01/01/swift01/" data-id="cj6wyl6ae000hjizofmdh288m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS-Wiondows认证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/25/iOS-Wiondows认证/" class="article-date">
+  <time datetime="2016-08-25T13:47:06.000Z" itemprop="datePublished">2016-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/25/iOS-Wiondows认证/">iOS-Wiondows认证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="三行代码让你通过UIWebview中遇到的NTLM验证"><a href="#三行代码让你通过UIWebview中遇到的NTLM验证" class="headerlink" title="三行代码让你通过UIWebview中遇到的NTLM验证"></a>三行代码让你通过UIWebview中遇到的NTLM验证</h2><p>Windows认证分为<code>NTLM</code>认证 和<code>Kerberos v5</code>身份认证，这里只列出NTLM认证的情况。在移动开发中细分为两种情况（iOS为例）</p>
+<h4 id="访问的API是带NTLM认证-From身份认证"><a href="#访问的API是带NTLM认证-From身份认证" class="headerlink" title="访问的API是带NTLM认证+From身份认证"></a>访问的API是带NTLM认证+From身份认证</h4><p>其中NTLM认证只是作为一种加强方式（只是微软环境才有的），或者受限于服务端的其他环境需要。那么在移动端该层认证有点多余，并且会影响效率。因为每次访问该接口都是先返回401质询后，提取出scheme,若为NTLM再设置其认证信息，如设置其domain信息等。</p>
+<p>如访问xx移动登录接口，就一个典型的带了windows认证后又要传Form参数的情况</p>
+<p><a href="http://xxx.xxx.xx:8600/MobileService/MobileHandler.ashx?action=Login" target="_blank" rel="external">http://xxx.xxx.xx:8600/MobileService/MobileHandler.ashx?action=Login</a></p>
+<p>Form参数列表这里就不一一列出<br>如何获取需要NTLM api的数据？若使用ASIHttp的，只需要设置 request的username和password即可。AFHttpNetwork同理，只是设置credentials的时候复杂些。但是要用原生的NSURLConnection 或者NSURLSession 请参见下文中访问带NTLM验证的网页。从网络抓包结果来看：访问一次接口要先失败一次第二次传身份信息才成功，某种程度上导致效率较低。</p>
+<h4 id="访问的资源是html"><a href="#访问的资源是html" class="headerlink" title="访问的资源是html"></a>访问的资源是html</h4><p>即html需要先过了NTLM验证才能访问，如访问路由器的页面192.168.1.1，会默认弹出一个认证框出来。如果是我们自己开发或者集成带有windows认证的页面，就无法自动弹窗出来，因为弹窗属于窗口级别、在我们开发的程序中不能越级访问系统资源，需要我们手动实现起认证功能。这里用iOS原生的sdk方法说明。</p>
+<h5 id="Step-1，"><a href="#Step-1，" class="headerlink" title="Step 1，"></a>Step 1，</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSURLRequest *req =[NSURLRequest requestWithURL:reqUrl];</div><div class="line"></div><div class="line">NSURLConnection *connect =[NSURLConnection connectionWithRequest:req delegate:self];</div><div class="line"></div><div class="line">[connect start];</div></pre></td></tr></table></figure>
+<p>构建一个NSURLRequest请求对象，只需要一个NSURL地址即可，这里reqUrl可以写为</p>
+<p>[NSURL UrlWithString:@”<a href="http://需要过windows认证的页面地址”" target="_blank" rel="external">http://需要过windows认证的页面地址”</a>]</p>
+<h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2,"></a>Step 2,</h5><p>以NSURLRequest的实例对象构建NSURLConnection实例对象，并设置Connection的委托方法，可以理解为回调方法，当请求发送到服务端后，服务端返回数据后就会进入对应的回调方法，返回该连接是否需要认证、或者其他然后再进行处理。</p>
+<p>进入NSURLConnection的回调方法后，判断其认证方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">//处理身份认证(void)connection:(NSURLConnection *)connectiondidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    if ([challenge previousFailureCount] == 0)</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">//若是windows认证方式，iOS的sdk会自动进入该回调方法，</div><div class="line"></div><div class="line">//在没有尝试认证失败的情况下，设置Credential的参数</div><div class="line"></div><div class="line">        //USERNAME</div><div class="line"></div><div class="line">        //PASSWORD</div><div class="line"></div><div class="line">            [[challenge sender]useCredential:[NSURLCredential credentialWithUser:@&quot;USERNAME&quot;password:@&quot;PASSWORD&quot;persistence:NSURLCredentialPersistencePermanent]forAuthenticationChallenge:challenge];</div><div class="line"></div><div class="line">            NSLog(@&quot;...1&quot;);</div><div class="line"></div><div class="line">    &#125;else</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">若没有认证，则取消AuthenticaionChllenge的操作</div><div class="line"></div><div class="line">        [[challenge sender]cancelAuthenticationChallenge:challenge];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//处理访问的网页，在改方法里面再用webview载入request请求后，就可以实现了访问带有windows认证的网页。</div><div class="line"></div><div class="line">-(void)connection:(NSURLConnection *)connectiondidReceiveResponse:(NSURLResponse *)response;</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;received response viansurlconnection&quot;);</div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line">    /** THIS IS WHERE YOU SET MAKE THE NEWREQUEST TO UIWebView, which will use the new saved auth info **/</div><div class="line"></div><div class="line">#pragma mark -真实访问的url地址</div><div class="line"></div><div class="line">    NSURLRequest *urlRequest = [NSURLRequestrequestWithURL:[NSURL URLWithString:@&quot;http://192.168.90.130/_layouts/ReportServer/RSViewerPage.aspx?rv%3aRelativeReportUrl=%2fReportLib%2fReports%2f%25E8%25BF%2590%25E8%2590%25A5-%25E5%25AE%25A2%25E8%25BF%2590%25E9%2587%258F.rdl&quot;]];</div><div class="line">  </div><div class="line">    [_webView loadRequest:urlRequest];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>以上的代码适用于iOS7或者iOS8,但是在iOS9以上，苹果废弃了NSURLConnection，那么我们需要做的就是将NSURLConnection的方式迁移到NSURLSession的回调方法即可。</p>
+<p> <code>show me the code</code></p>
+<h5 id="构建NSURLSession请求，设置委托回调"><a href="#构建NSURLSession请求，设置委托回调" class="headerlink" title="构建NSURLSession请求，设置委托回调"></a>构建NSURLSession请求，设置委托回调</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">NSMutableURLRequest *webReq = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://xxx.com:8000/todolist.aspx&quot;]];</div><div class="line">NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];</div><div class="line">NSURLSession *conn =[NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];</div><div class="line">NSURLSessionDataTask *task = [conn dataTaskWithRequest:webReq];</div><div class="line">[task resume];</div></pre></td></tr></table></figure>
+<h5 id="在回调鉴权中填入相关信息"><a href="#在回调鉴权中填入相关信息" class="headerlink" title="在回调鉴权中填入相关信息"></a>在回调鉴权中填入相关信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge</div><div class="line"> completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler &#123;</div><div class="line">    </div><div class="line">    NSString *authMethod = [[challenge protectionSpace] authenticationMethod];</div><div class="line">    //下面的鉴权没有判断是哪种鉴权方法，精细点可以只针对哪种认证做处理</div><div class="line">    if ([challenge previousFailureCount] == 0) &#123;</div><div class="line">        _authed = YES;</div><div class="line">        /* SET YOUR credentials, i&apos;m just hard coding them in, tweak as necessary */</div><div class="line">        NSURLCredential *cred = [NSURLCredential credentialWithUser:@&quot;USERNAME&quot;</div><div class="line">                                                           password:@&quot;PASSWORD&quot;</div><div class="line">persistence:NSURLCredentialPersistenceNone];</div><div class="line">        [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];</div><div class="line">        </div><div class="line">        completionHandler(NSURLSessionAuthChallengeUseCredential, cred);</div><div class="line">        NSLog(@&quot;Finished Challenge&quot;);</div><div class="line">        </div><div class="line">    &#125; else &#123;</div><div class="line">        </div><div class="line">        [[challenge sender] cancelAuthenticationChallenge:challenge];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="webview载入request"><a href="#webview载入request" class="headerlink" title="webview载入request"></a>webview载入request</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask</div><div class="line">didReceiveResponse:(NSURLResponse *)response</div><div class="line"> completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler &#123;</div><div class="line">    </div><div class="line">    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://xxxx:8000/mERP/MobileWorkflow/todolist.aspx?usercode=USERNAME&amp;password=PWD&quot;]];</div><div class="line">    [_myWebView loadRequest:urlRequest];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><p>以上设置解决api访问级别的应该没有问题，但是测试在iOS9.3+webview载入request依然会有问题。可以构建一个NSURLComponets来解决这个问题。<strong>鉴权那套都不需要了</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSURLComponents *componet = [NSURLComponents componentsWithString:@&quot;http://xxxx.xxx.com:8000/mERP/MobileWorkflow/todolist.aspx?usercode=USERNAME&amp;password=PASSWORD&quot;];</div><div class="line">componet.user = @&quot;USERNAME&quot;;</div><div class="line">componet.password = @&quot;PASSWORD&quot;;</div><div class="line">[_myWebView loadRequest:[NSURLRequest requestWithURL:componet.URL]];</div></pre></td></tr></table></figure>
+<p><strong>就是这么任性</strong></p>
+<p>总结：</p>
+<p>不管是利用三方框架还是sdk的自带方法，用了windows认证的情况都是存在两次连接的情况的。至于在pc中是否也是两次连接我这里没有做详细研究。</p>
+<p>补充：</p>
+<p>在Android开发中实现了访问NTLM认证网页或者带windows认证接口的问题，现在在xx地铁中安卓端的代码就是采用的我在文中列出的解决办法。</p>
+<p>至于访问地铁报表页面或者访问公文文档库页面，显示自动匹配的问题我们是通过Client的UA字符串的办法来解决的，即让安卓客户端欺骗Sharepoint服务器它是iOS设备，并且这里UA字符串是我测试了iOS6，iOS7的各个硬件设备提取出来的。</p>
+<p>Mozilla/5.0 (iPhone; CPUiPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko)Version/6.0 Mobile/10B329 Safari/8536.25</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/08/25/iOS-Wiondows认证/" data-id="cj6wyl6a2000cjizokhw7glvb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS后台长活及逆向验证-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/29/iOS后台长活及逆向验证-1/" class="article-date">
+  <time datetime="2016-07-29T10:44:03.000Z" itemprop="datePublished">2016-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/29/iOS后台长活及逆向验证-1/">iOS后台长活及逆向验证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前我有问过同事（RocketChild）火箭闹钟的长后台,点击home键后，app一直长活，她提示他们是反编译了”怪物闹钟”得到的启发，然而在没有去反编译怪物闹钟的时候我猜测是播放静音文件，抓包看过没有voip的长连接。接下来我反编译过后得出的结论印证了我的猜测。</p>
+<p>##App常见的后台长活处理</p>
+<ul>
+<li>Voip   <a href="http://blog.csdn.net/missautumn/article/details/17102067" target="_blank" rel="external">voip实现长连接</a><br>XMPPFramework 有个属性就是开启后台长活的</li>
+<li>后台下载（Server push notification iOS7+）</li>
+<li>定位服务（显著位置更新）</li>
+<li><em>播放静音文件</em> （相比之前实现成本较低,通过合理设置audio的声音通道不会污染其他声音源）</li>
+</ul>
+<h4 id="播放静音文件-实现iOS应用在进入到后台之后，依旧可以执行任务，并不受时间的限制"><a href="#播放静音文件-实现iOS应用在进入到后台之后，依旧可以执行任务，并不受时间的限制" class="headerlink" title="播放静音文件 实现iOS应用在进入到后台之后，依旧可以执行任务，并不受时间的限制"></a>播放静音文件 实现iOS应用在进入到后台之后，依旧可以执行任务，并不受时间的限制</h4><p><a href="https://github.com/firewolf-ljw/BackgroundTask" target="_blank" rel="external">swift实现播放静音文件</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-394ccd68d858b1c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="播放静音文件的demo"></p>
+<p><a href="http://download.csdn.net/download/duanhai189/8168063" target="_blank" rel="external">oc实现播放静音文件</a></p>
+<p> 思路：</p>
+<ol>
+<li>使用UIApplication对象的beginBackgroundTaskWithExpirationHandler申请后台执行任务，该任务只有大概3分钟的运行时间</li>
+<li>应用申请到后台执行任务后，使用NSTimer开启一个定时任务，主要负责监控应用剩余的后台可执行时间，当可用的时间少于一个值时，播放一段默声音乐，然后调用UIApplication对象的endBackgroundTask方法将之前申请的后台执行任务结束掉，最后再重新申请一个后台执行任务，这样就可以实现后台不限时执行任务了</li>
+<li>应用在后台播放音乐，需要开启Background Modes，然后勾选Audio and AirPlay即可</li>
+</ol>
+<blockquote>
+<p>注：应用在后台运行的过程中重新申请后台执行任务是无效的，通过在网上查找资料，<em>播放音乐可以让应用进入到一个假前台的状态，此时重新申请后台执行任务是有效的</em>，如此循环n次，就可以获得大约3n的后台执行时间，从而达到后台无限时执行任务</p>
+</blockquote>
+<p>Show me the code(oc)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;</div><div class="line">    NSError *error = nil;</div><div class="line">    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&amp;error];</div><div class="line">    </div><div class="line">    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(tik) userInfo:nil repeats:YES];</div><div class="line">    // Override point for customization after application launch.</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在tik方法中判断下后台保留的时间是多少秒，这里为了稳妥，设置为61s。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (void)tik&#123;</div><div class="line">    </div><div class="line">    if ([[UIApplication sharedApplication] backgroundTimeRemaining] &lt; 61.0)</div><div class="line">    &#123;</div><div class="line">        [self longTimeTask];</div><div class="line">        [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如何避免上架过程中被reject掉,闹钟类App中有播放声音文件的需求，可以在App的plist主动声明。</p>
+<p>那么如果我们一开始没有猜中开头和结尾常规的方法就是沿用套路。</p>
+<h4 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h4><ul>
+<li><h5 id="UI层分析"><a href="#UI层分析" class="headerlink" title="UI层分析"></a>UI层分析</h5><p>在日常开发中我们可以用Xcode自带的工具进行视图层次的摸索，这里省略。那么如何去分析别人家的app，我们需要借助的工具Reveal。<br><a href="http://www.jianshu.com/p/bd780be87976" target="_blank" rel="external">Reveal如何在越狱设备上调试</a></p>
+</li>
+<li><h4 id="网络层分析"><a href="#网络层分析" class="headerlink" title="网络层分析"></a>网络层分析</h4><p>青花瓷大法:Charles用来抓网络传输数据包，如丝般顺滑。基础功能这里也不用介绍了，值得注意的地方这里列举两个<br>1.如果要抓取https的包，我们需要配置SSL设置 <img src="https://dn-inhouse.qbox.me/charles.png" alt=""><br>2.上面那步骤完成后，有小伙伴说在真机上面还是不能抓取https的数据，要么你的Charles版本有点老，在iOS9中是有开启ATS功能的，普通的App为了向下兼容都是默认关闭了，在旧版本的Charles中对开启ATS功能的app确实无法抓包，在目前的版本中已经突破了这个限制。<br><a href="http://www.zhihu.com/question/26600336/answer/63135092" target="_blank" rel="external">Charles抓包的原理</a><br>本质还是”中间人”攻击。需要抓取https的包你的设备上还需要信任由Charles下发的证书。<br><img src="https://dn-inhouse.qbox.me/sslcerconfig.png" alt=""></p>
+</li>
+</ul>
+<hr>
+<h3 id="逆向套路"><a href="#逆向套路" class="headerlink" title="逆向套路"></a>逆向套路</h3><blockquote>
+<p>让目标程序破茧而出 －－ dumpdecrypted<br>1.运行时分析 －－ cycript<br>2.追踪神器 －－ logify<br>3.反汇编工具 －－ hopper<br>4.断点调试工具 －－ lldb+debugserver<br>5.注入工具 －－ insert_dylib + install_name_tool</p>
+</blockquote>
+<ul>
+<li><h4 id="砸壳"><a href="#砸壳" class="headerlink" title="砸壳"></a>砸壳</h4><p>apple市场里面的应用默认就加了一道屏障,需要自备砸壳大法。<br><a href="http://www.jianshu.com/p/6a1cf4416375" target="_blank" rel="external">砸壳参考</a><br><em>这样岂不是太繁琐了，有没有舒爽的姿势，有的！ </em><br>我会告诉你用pp助手下载越狱市场里面的app都是砸过壳的吗？</p>
+</li>
+<li><h4 id="砸壳后我们能干点什么（class-dump-amp-找线索）"><a href="#砸壳后我们能干点什么（class-dump-amp-找线索）" class="headerlink" title="砸壳后我们能干点什么（class-dump &amp;  找线索）"></a>砸壳后我们能干点什么（class-dump &amp;  找线索）</h4><p>class-dump 使用相信大家都比较熟悉，这里也略过。拿到.h文件后我们可以看下类中的方法以及成员变量;拿到的.h 文件为后面配置 theos的一个插件logify来自动生成Tweak.xm<br>keyword:mute.mp3 silent.wav 等<br>分析app的plist文件也可以获得它有哪些声明的文件</p>
+</li>
+<li><h4 id="Cycript-运行时分析（这里参考微信读书团队分享中的例子作为案列）"><a href="#Cycript-运行时分析（这里参考微信读书团队分享中的例子作为案列）" class="headerlink" title="Cycript 运行时分析（这里参考微信读书团队分享中的例子作为案列）"></a>Cycript 运行时分析（这里参考微信读书团队分享中的例子作为案列）</h4><blockquote>
+<p>砸完壳之后，我们再 dump出头文件，但是微信的类太多了，头文件有几百个，如此多的头文件，让人眼花缭乱，所以要找到突破口，我们得缩小范围，我喜欢用的思路是从 ui入手，先找到微信对话界面的 controller，然后再追踪 controller中对应的消息处理函数。<br>这样第二个工具 cycript 隆重出场了 ，它也是个<strong>手机端</strong> 的工具，用于查看 app运行时数据，大伙儿可以通过 cydia安装，安装完之后，ssh到越狱手机的终端。<br>先找到微信的进程id：ps aux | grep WeChat再执行：cycript -p 微信的pid</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-bea4a6cbf3b57bbf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信app从UI树分析"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-64ac59a2181f4547.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cycript打印UI树"></p>
+<p>1 找到当前的进程id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep Appname</div></pre></td></tr></table></figure></p>
+<p>2 cycript -p Target app pid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UIApp.keyWindow.recursiveDescription().toString()</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>打印的是当前的ui树，随便找一个节点（<strong>树的中间，为什么要在中间，大家可以思考下</strong> ），copy它的内存地址，例如 <strong>0x14da3f000</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[#内存地址 nextResponder]</div></pre></td></tr></table></figure>
+<p>直到找到一个ViewController，然后再去.h里面 找到对应的类头文件。</p>
+<ul>
+<li><h4 id="Hopper"><a href="#Hopper" class="headerlink" title="Hopper"></a>Hopper</h4>然而真的要看到.h里面的方法实现，我们还是得借助IDA类似的工具来进行分析，简单些的就使用Hopper进行iOS包中的二进制文件分析,在工具里面点击if(b)f(x)可以查看，某个方法的伪代码实现，这里虽然是伪代码，但是其实可以看见许多关键信息了，结合我们自己的经验基本可以得出想要模仿的 app的关键信息点了（如果对方写法不按照规范来，不按照常理出牌，我们也没法！）如视频播放某个app什么格式都能播放，我们主要分析其解码用了什么框架，是否用了三方的东西，或者用了哪个三方的库，基本可以构面了，然后再模仿下就好了。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-fbe1bdbc8375c076.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="怪物闹钟"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-2634de53ce885589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="火箭闹钟"></p>
+<p>基于播放静音文件的线索我在Hopper里面搜索下关键字,省去了我去用lldb+debugserver的步骤。其实这里只是一个抛砖引玉的过程，我觉得我们在做功能的同时如果能从反方向的角度来思考下问题。</p>
+<p>####写在最后关于用Theos编写、改写tweak的时候要注意的地方有：<br>1，Tweak的control 里面的name 必须要和plist名字对应</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-289ff14f4b0a512b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="改写一个tweak"></p>
+<p>2，Tweak.plist的<br><img src="http://upload-images.jianshu.io/upload_images/519579-cc500258c70552f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要hook的app的签名和tweak中的签名要匹配，否则后面执行make package install安装后没有效果"></p>
+<p>3，Tweak.wx 加入了%new新方法你需要在你导入的类.h文件中添加你新加方法的声明</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-ba7c7dabbb730563.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Tweak新增加方法需要在引入头文件中声明"></p>
+<p>4，Makefile的书写，疑惑的地方是我自己创建了个theos的替身,执行的时候报错，我下载了个微信红包的Tweak.xm替换自己的theos替身就好了，应该是文件夹权限的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">THEOS_DEVICE_IP = 172.16.0.115</div><div class="line">THEOS_DEVICE_PORT = 22</div><div class="line">ARCHS = armv7 arm64</div><div class="line">TARGET = iphone:latest:9.0</div><div class="line"></div><div class="line">include theos/makefiles/common.mk</div><div class="line"></div><div class="line">TWEAK_NAME = GodTest</div><div class="line">GodTest_FILES = Tweak.xm</div><div class="line">GodTest_FRAMEWORKS = UIKit Foundation</div><div class="line"></div><div class="line">include $(THEOS_MAKE_PATH)/tweak.mk</div><div class="line"></div><div class="line">after-install::</div><div class="line">	install.exec &quot;killall -9 GodTest&quot;</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/519579-0b0f32f96469239b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Makefile注意事项"><br><a href="https://dn-inhouse.qbox.me/%E5%BD%92%E6%A1%A3.zip" target="_blank" rel="external">测试的Tweak工程和Xcode工程打包</a></p>
+<p>参考链接：<br><a href="http://dev.qq.com/topic/5791da152168f2690e72daa4" target="_blank" rel="external">http://dev.qq.com/topic/5791da152168f2690e72daa4</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/07/29/iOS后台长活及逆向验证-1/" data-id="cj6wyl6a5000fjizoda2nv1js" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Discover相关文档" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/20/Discover相关文档/" class="article-date">
+  <time datetime="2016-07-20T10:44:03.000Z" itemprop="datePublished">2016-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/20/Discover相关文档/">Discover相关笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Discover"><a href="#Discover" class="headerlink" title="#Discover"></a>#Discover</h2><ul>
+<li><h2 id="获取选择的城市"><a href="#获取选择的城市" class="headerlink" title="获取选择的城市"></a>获取选择的城市</h2></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">theCityArray = [[NSMutableArray alloc] initWithCapacity:10];</div><div class="line"></div><div class="line">[ServiceRouter requestHotCities:0.</div><div class="line">                          longitude:0.</div><div class="line">                              block:^(RequestResultType type,NSArray* cityArray)&#123;</div><div class="line">                                  if (REQUEST_SUCCEEDED(type)) &#123;</div><div class="line">                                      [temArray addObjectsFromArray:cityArray];</div><div class="line">                                  &#125;</div><div class="line">                                  </div><div class="line">                              &#125;];</div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="在地图的Delegate回调中禁用LocationManager中事件更新"><a href="#在地图的Delegate回调中禁用LocationManager中事件更新" class="headerlink" title="在地图的Delegate回调中禁用LocationManager中事件更新"></a>在地图的Delegate回调中禁用LocationManager中事件更新</h2>否则会造成updatelocation方法一直回调，虽然在后面的call api之前被滤掉了，但是mapview的delegate方法一直回调，徒增耗电量。</li>
+<li><h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2>相对独立，只是搜索地址，点击后跳转到搜索的地点上。</li>
+<li><h2 id="时光机-复用之前的逻辑"><a href="#时光机-复用之前的逻辑" class="headerlink" title="时光机 复用之前的逻辑"></a>时光机 复用之前的逻辑</h2>点击按钮后弹出时光机的选项</li>
+<li><h2 id="点击定位当前"><a href="#点击定位当前" class="headerlink" title="点击定位当前"></a>点击定位当前</h2><p>locationmanager中的方法的触发，获得位置回调后调用方法停止</p>
+</li>
+<li><p>##手指移动地图</p>
+<h4 id="平移、-对角线移动"><a href="#平移、-对角线移动" class="headerlink" title="平移、  对角线移动"></a>平移、  对角线移动</h4><blockquote>
+<p>产品给出的是屏幕移动3/4后才开始请求</p>
+</blockquote>
+</li>
+</ul>
+<p>移动可能会造成中心的点的变化，通过取对角线的中点和上次中点的变化，可以判断是否发生了变化。如果只对中心点进行放大缩小，中心点的位置就没有变化，这个时候再结合地图中的span属性进行判断就能判断是缩放还是平移了。这里总体上面还是迁移原来老的逻辑。</p>
+<ul>
+<li><h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><p>放大缩小每次都是上次的一个比值，1/1.2  1*1.2,rate = 1.2<br>无论何种移动，都是在regionDidChanged回调方法中去处理</p>
+</li>
+<li><p>Workflow<br>1,Discover 首次加载的时候调用定位locationmanager的starlocate方法，获取到位置后停止。viewDidload之前设置了一个默认的地址及北京，然后在开始进行location current的地址回调方法。 </p>
+<blockquote>
+<p>首次定位无论如何都去发送网络请求（之前的代码逻辑中有个bool值用于判断,是否是首次请求,重构过程中可以考虑是否还用这个标识）。</p>
+</blockquote>
+</li>
+</ul>
+<p>2，缩放每次都进行网络请求<br>3，移动过程中之前的判断是经度、或者纬度发生变化是0.001的差值时候才发生网络请求。</p>
+<p><a href="http://www.zhihu.com/question/26600336" target="_blank" rel="external">Charles如何抓取https数据包的</a></p>
+<p><a href="http://swiftweekly.cn/archive.html" target="_blank" rel="external">Swiftweekly</a></p>
+<ul>
+<li>####Span的解释 <blockquote>
+<p>大概意思就是span表示的是regoin的范围。它有两个字段一个是latitudeDelta，表示纬度范围，南纬和北纬加一起应该有180度，所以它的范围应该是大于0度，小于等于180度；另一个是longitudeDelta，表示经度范围，东经和西经加一起应该有360度，所以它的范围应该是大于0度，小于360度。看完了上面的解释其实还不是很理解，需要用代码来验证一下上面的解释。那我就举一个例子，让地图正好显示中国地图全部。我们先来看看中国地图的经纬度范围，百度搜索“中国经纬度范围”，得出如下结果。</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="http://www.it165.net/pro/html/201403/10827.html" target="_blank" rel="external">参考链接</a></p>
+<ul>
+<li><h4 id="p-s-动态方法解析-动态方法解析"><a href="#p-s-动态方法解析-动态方法解析" class="headerlink" title="p.s 动态方法解析 动态方法解析"></a>p.s 动态方法解析 <a href="http://www.jianshu.com/p/ea1743715609" target="_blank" rel="external">动态方法解析</a></h4></li>
+</ul>
+<p>*对象引用关联比如给AlertView添加一个东西</p>
+<blockquote>
+<p>通过runtime来添加类变量的方式并不是Category的功劳，objc_setAssociatedObject 和 objc_getAssociatedObject在任何类型的类里都可以把一个变量绑定个一个对象，实际上起到的是一种绑定对象传值的作用，但这并不是说通过Category是能添加变量的，严格意义上来讲单纯的通过Category是不能的，只能说runtime和Category两者结合着还实现的。runtime并不属于Category的功能范畴</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@interface Teacher : NSObject  </div><div class="line">&#123;  </div><div class="line">    NSUInteger age;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>光有个年龄还不能满足对teacher的描述，我想加个profession实例来存teacher的专业。直观的想法是子类化Teacher，其实也可以用类别。<br>你需要了解一下 runtime 编程知识，关注一下 objc_setAssociatedObject 和 objc_getAssociatedObject 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//  </div><div class="line">//  Teacher+Profession.m  </div><div class="line">//    </div><div class="line">  </div><div class="line">#import &quot;Teacher+Profession.h&quot;  </div><div class="line">#import &lt;objc/runtime.h&gt;  </div><div class="line">  </div><div class="line">const char *ProfessionType = &quot;NSString *&quot;;  </div><div class="line">@implementation Teacher (Profession)  </div><div class="line">  </div><div class="line">-(void)setProf:(NSString*)prof  </div><div class="line">&#123;  </div><div class="line">    objc_setAssociatedObject(self, ProfessionType, prof, OBJC_ASSOCIATION_RETAIN_NONATOMIC);  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">-(NSString *)prof  </div><div class="line">&#123;  </div><div class="line">    NSString *pro = objc_getAssociatedObject(self, ProfessionType);  </div><div class="line">    return pro;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在就可以通过setProf: 和 prof 来存取 teacher 的 profession 值了。</p>
+<p>/<em><br>消息转发要点 
+</em>/<br>如图所示<br><img src="http://img.blog.csdn.net/20160629125258569 =400x600" alt=""><br>从上面我们可以发现，在发消息的时候，如果 selector 有对应的 IMP ,则直接执行，如果没有，oc 给我们提供了几个可供补救的机会，依次有 </p>
+<ul>
+<li>resolveInstanceMethod 、</li>
+<li>forwardingTargetForSelector、</li>
+<li>forwardInvocation。<br>Aspects 之所以选择在 forwardInvocation 这里处理是因为，这几个阶段特性都不太一样：resolvedInstanceMethod 适合给类/对象动态添加一个相应的实现，<br>forwardingTargetForSelector 适合将消息转发给其他对象处理,<br>相对而言，forwardInvocation 是里面最灵活，最能符合需求的。<br>因此 Aspects 的方案就是，对于待 hook 的 selector，将其指向 objc_msgForward / _objc_msgForward_stret ,同时生成一个新的 aliasSelector 指向原来的 IMP，并且 hook 住 forwardInvocation 函数，使他指向自己的实现。按照上面的思路，当被 hook 的 selector 被执行的时候，首先根据 selector 找到了 objc_msgForward / _objc_msgForward_stret ,而这个会触发消息转发，从而进入 forwardInvocation。同时由于 forwardInvocation 的指向也被修改了，因此会转入新的 forwardInvocation 函数，在里面执行需要嵌入的附加代码，完成之后，再转回原来的 IMP。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/07/20/Discover相关文档/" data-id="cj6wyl69p0003jizo9uy215vi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gcd学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/05/gcd学习/" class="article-date">
+  <time datetime="2016-07-05T05:47:54.000Z" itemprop="datePublished">2016-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/05/gcd学习/">gcd学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h1><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>GCD有三种queue.  </p>
+<ul>
+<li>main queue: 主线程队列。是一个串行队列。一般用来更新UI。</li>
+<li>global queue: 全局队列，是一个并行队列。使用方法相信大家都知道。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        [self dosomething];</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>上面的意思就是开启一个异步线程，在全局队列中执行。  </p>
+<ul>
+<li>custom queue:自定义队列。有两种自定义队列。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t serial_queue = dispatch_queue_create(&quot;com.reviewcode.www&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line">dispatch_queue_t concurrent_queue = dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
+<p><code>serial_queue</code>即是我自定义的一个串行队列。上面提到的主线程队列也是一个串行队列。<br><code>concurrent_queue</code>是我自定义的一个并行队列。上面提到的global queue就是一个并行队列。<br>现在我们来讨论2个问题。</p>
+<ol>
+<li><code>dispatch_async</code>里使用串行队列和并行队列的效果。  </li>
+<li><code>dispatch_sync</code>里使用串行队列和并行队列的效果。<br>串行队列和并行队列的创建如下。  </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">serial_queue = dispatch_queue_create(&quot;com.reviewcode.www&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line">concurrent_queue = dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div></pre></td></tr></table></figure>
+<h3 id="讨论的问题"><a href="#讨论的问题" class="headerlink" title="讨论的问题"></a>讨论的问题</h3><h4 id="在dispatch-async使用串行队列"><a href="#在dispatch-async使用串行队列" class="headerlink" title="在dispatch_async使用串行队列"></a>在dispatch_async使用串行队列</h4><p>看代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (void)testSerialQueueWithAsync</div><div class="line">&#123;</div><div class="line">    for (int index = 0; index &lt; 10; index++) &#123;</div><div class="line">        dispatch_async(serial_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在<code>viewDidLoad()</code>方法里打印。打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">Running on main Thread</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fad5be0f020&gt;&#123;number = 2, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>打印结果的几个特征。  </p>
+<ol>
+<li>在dispatch_async使用的所有Thread均为同一个Thread。因为他们的指针地址完全相同。  </li>
+<li>输出结果是按顺序输出，符合我们对串行队列的期待。即FIFO。先进先出原则。 </li>
+<li><code>Running on main Thread</code>这句话并没有在最后执行，而是会出现在随机的位置，这也符合我们对dispatch_async的期待，因为他会开辟一个新的线程执行，不会阻塞主线程。<br>ok，让我们测试下一个。  </li>
+</ol>
+<h4 id="在dispatch-async中使用并行队列"><a href="#在dispatch-async中使用并行队列" class="headerlink" title="在dispatch_async中使用并行队列"></a>在dispatch_async中使用并行队列</h4><p>看代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)testConcurrentQueueWithAsync &#123;</div><div class="line">    for (int index =0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 1</div><div class="line">index = 5</div><div class="line">Running on main Thread</div><div class="line">index = 2</div><div class="line">index = 6</div><div class="line">index = 7</div><div class="line">index = 3</div><div class="line">index = 0</div><div class="line">index = 8</div><div class="line">index = 4</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fded2a17e20&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1508e40&gt;&#123;number = 3, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded290d6e0&gt;&#123;number = 5, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2a17e60&gt;&#123;number = 4, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1510470&gt;&#123;number = 8, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded17050f0&gt;&#123;number = 6, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded1704b30&gt;&#123;number = 10, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2806fe0&gt;&#123;number = 7, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2900e10&gt;&#123;number = 9, name = (null)&#125;</div><div class="line">current thread is &lt;NSThread: 0x7fded2b01060&gt;&#123;number = 11, name = (null)&#125;</div></pre></td></tr></table></figure>
+<p>打印结果的特征如下：  </p>
+<ol>
+<li>输出的结果是乱序的，说明我们的输出语句是并发的，由多个线程共同执行的。  </li>
+<li><code>Running on main Thread</code>这句话依然没有被阻塞，直接输出了。  </li>
+<li>每次打印语句的Thread均不相同。  </li>
+</ol>
+<p>仔细比对两次打印结果的异同点。提出问题。  </p>
+<ol>
+<li>串行队列如何保证在异步线程中遵守先进先出原则（从Demo里看，也就是顺序打印我们的结果）？<br>很简单，它会保证每次dispatch_async开辟线程执行串行队列中的任务时，总是使用同一个异步线程。这也是为什么我们的第一次打印结果中，NSThread总是同一个。  </li>
+<li>在dispatch_async中放入并行队列并执行的时候，为什么执行顺序总是乱序的？<br>因为在并行对列中，每执行一次任务的时候，dispatch_async总会为我们开辟一个新的线程（当然，开辟线程的总量是有限制的，你可以试试循环一万次并打印Thread信息）来执行任务，所以不同线程开始结束的时间都不一样，导致了结果是乱序的。  </li>
+</ol>
+<h4 id="在dispatch-sync中使用串行队列"><a href="#在dispatch-sync中使用串行队列" class="headerlink" title="在dispatch_sync中使用串行队列"></a>在dispatch_sync中使用串行队列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (void)testSerialQueueWithSync</div><div class="line">&#123;</div><div class="line">    for (int index =0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_sync(serial_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7ff84b507ac0&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on main Thread</div></pre></td></tr></table></figure>
+<ol>
+<li>dispatch_sync并没有开辟一个新的线程，直接在当前线程中执行代码（即main线程）。所以会阻塞当前线程。</li>
+<li>Running on main Thread在最后输出。  </li>
+</ol>
+<p>也就是说，当使用dispatch_sync执行串行队列的任务时，不会开辟新的线程，会直接使用当前线程执行队列中的任务。  </p>
+<h4 id="在dispatch-sync中使用并行队列"><a href="#在dispatch-sync中使用并行队列" class="headerlink" title="在dispatch_sync中使用并行队列"></a>在dispatch_sync中使用并行队列</h4><p>代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)testConcurrentQueueWithSync &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        </div><div class="line">        dispatch_sync(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">            NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            </div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on main Thread&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">index = 0</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 1</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 2</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 3</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 4</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 5</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 6</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 7</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 8</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">index = 9</div><div class="line">current thread is &lt;NSThread: 0x7fc1c0e048e0&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on main Thread</div></pre></td></tr></table></figure>
+<p>结果很奇怪，和在串行队列执行的效果一模一样。按我们的思考，并行队列里执行任务不应该是多个线程同时跑么？其实是由于dispatch_sync并不会开辟新的线程执行任务，所以导致了执行并行队列任务的线程总会是一个线程，自然，结果是一样的。  </p>
+<h2 id="dispatch-barrier"><a href="#dispatch-barrier" class="headerlink" title="dispatch_barrier"></a>dispatch_barrier</h2><p>讲完了GCD最基本的用法。我们来看看一个不太常用的GCD。<code>dispatch_barrier</code>。<br>这个barrier我感觉使用霸道总裁来形容比较合适。这里借用raywenderlich上介绍barrier的一张图。<br><img src="https://cdn1.raywenderlich.com/wp-content/uploads/2014/01/Dispatch-Barrier.png" alt=""><br>看的有点懵逼？<br>不要紧。我来解释一下。<br>首先，在一个并行队列中，有多个线程在执行多个任务，在这个并行队列中，有一个dispatch_barrier任务。这样会有一个什么效果呢？<br>就是，所有在这个dispatch_barrier之后的任务总会等待barrier之前的所有任务结束之后，才会执行。那么细心的同学可能会发现这里有个问题，既然所有在barrier之后的任务都会等待在barrier之前的任务结束之后执行，那么barrier本身执行是否会阻塞当前线程？<br>所以，dispatch_barrier也是有两个方法的。<code>dispatch_barrier_sync</code>和<code>dispatch_barrier_async</code>.  </p>
+<h3 id="dispatch-barrier-sync"><a href="#dispatch-barrier-sync" class="headerlink" title="dispatch_barrier_sync"></a>dispatch_barrier_sync</h3><p>还是看代码理解的更快一点。代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)testBarrierSyncWithConCurrentQueue &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (int j = 0; j&lt;10000; j++) &#123;</div><div class="line">        dispatch_barrier_sync(concurrent_queue, ^&#123;</div><div class="line">            if (j == 10000-1) &#123;</div><div class="line">                NSLog(@&quot;barrier Finished&quot;);</div><div class="line">                NSLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSLog(@&quot;Running on Main Thread&quot;);</div><div class="line">    </div><div class="line">    for (int index =10; index&lt;20; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            NSLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么运行之后我们的输出结果如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">index = 2</div><div class="line">index = 7</div><div class="line">index = 0</div><div class="line">index = 1</div><div class="line">index = 3</div><div class="line">index = 4</div><div class="line">index = 5</div><div class="line">index = 8</div><div class="line">index = 6</div><div class="line">index = 9</div><div class="line">barrier Finished</div><div class="line">current thread is &lt;NSThread: 0x7fa81bd08050&gt;&#123;number = 1, name = main&#125;</div><div class="line">Running on Main Thread</div><div class="line">index = 10</div><div class="line">index = 11</div><div class="line">index = 12</div><div class="line">index = 13</div><div class="line">index = 14</div><div class="line">index = 15</div><div class="line">index = 16</div><div class="line">index = 17</div><div class="line">index = 18</div><div class="line">index = 19</div></pre></td></tr></table></figure>
+<p>ok，总结一下。  </p>
+<ol>
+<li><code>dispatch_barrier_sync</code>确实是会在队列中充当一个栅栏的作用，凡是在他之后进入队列的任务，总会在<code>dispatch_barrier_sync</code>之前的所有任务执行完毕之后才执行。  </li>
+<li>见名知意，<code>dispatch_barrier_sync</code>是会在主线程执行队列中的任务的，所以，<code>Running on Main Thread</code>这句话会被阻塞，从而在barrier之后执行。  </li>
+</ol>
+<h3 id="dispatch-barrier-async"><a href="#dispatch-barrier-async" class="headerlink" title="dispatch_barrier_async"></a>dispatch_barrier_async</h3><p>那么我们再看看<code>dispatch_barrier_async</code>执行的效果。<br>代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)testBarrierAsyncWithConCurrentQueue &#123;</div><div class="line">    for (int index = 0; index&lt;10; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            MyLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (int j = 0; j&lt;10000000; j++) &#123;</div><div class="line">        dispatch_barrier_async(concurrent_queue, ^&#123;</div><div class="line">            if (j == 10000000-1) &#123;</div><div class="line">                MyLog(@&quot;barrier Finished&quot;);</div><div class="line">                MyLog(@&quot;current thread is %@&quot;, [NSThread currentThread]);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    MyLog(@&quot;Running on Main Thread&quot;);</div><div class="line">    </div><div class="line">    for (int index =10; index&lt;20; index++) &#123;</div><div class="line">        dispatch_async(concurrent_queue, ^&#123;</div><div class="line">            MyLog(@&quot;index = %d&quot;, index);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实结果不难猜到。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">index = 1</div><div class="line">index = 0</div><div class="line">index = 4</div><div class="line">index = 2</div><div class="line">index = 3</div><div class="line">index = 8</div><div class="line">index = 9</div><div class="line">index = 7</div><div class="line">index = 5</div><div class="line">index = 6</div><div class="line">Running on Main Thread</div><div class="line">barrier Finished</div><div class="line">current thread is &lt;NSThread: 0x7f9b0b6023c0&gt;&#123;number = 2, name = (null)&#125;</div><div class="line">index = 11</div><div class="line">index = 13</div><div class="line">index = 14</div><div class="line">index = 10</div><div class="line">index = 15</div><div class="line">index = 17</div><div class="line">index = 16</div><div class="line">index = 12</div><div class="line">index = 18</div><div class="line">index = 19</div></pre></td></tr></table></figure>
+<p><code>dispatch_barrier_async</code>会开辟一条新的线程执行其中的任务，所以不会阻塞当前线程。其他的功能和<code>dispatch_barrier_sync</code>相同。  </p>
+<h3 id="几个小问题"><a href="#几个小问题" class="headerlink" title="几个小问题"></a>几个小问题</h3><ol>
+<li><p>为什么我们只举了barrier和并行队列的例子，而没有举barrier和串行队列的例子？<br>因为，barrier和串行队列配合是完全没有意义的。barrier的目的是什么？目的是为了在某种情况下，同一个队列中一些并发任务必须在另一些并发任务之后执行，所以需要一个类似于拦截的功能，迫使后执行的任务必须等待。那么，串行队列中的所有任务本身就是按照顺序执行的，那么又有什么必要使用拦截的功能呢？  </p>
+</li>
+<li><p>在global queue中使用barrier没有意义，为什么？<br>barrier实现的基本条件是，要写在同一队列中。举个例子，你现在创建了两个并行队列，你在其中一个队列中插入了一个barrier任务，那么你不可能期待他可以在第二个队列中生效，对吧。同样的，每一次使用global queue，系统分配给你的可能是不同的并行队列，你在其中插入一个barrier任务，又有什么意义呢？</p>
+</li>
+</ol>
+<h2 id="该做点什么了"><a href="#该做点什么了" class="headerlink" title="该做点什么了"></a>该做点什么了</h2><h4 id="思考一个问题，NSMutableDictionary是否是线程安全的？"><a href="#思考一个问题，NSMutableDictionary是否是线程安全的？" class="headerlink" title="思考一个问题，NSMutableDictionary是否是线程安全的？"></a>思考一个问题，NSMutableDictionary是否是线程安全的？</h4><p>做个测试好了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (void)testMutableDictionaryThreadSafe &#123;</div><div class="line">    dispatch_semaphore_t sema = dispatch_semaphore_create(0);</div><div class="line">    dispatch_async(concurrent_queue, ^&#123;</div><div class="line">        for (int index = 0; index&lt;1000 ; index++) &#123;</div><div class="line">            dict[@(index)] = @(index);</div><div class="line">        &#125;</div><div class="line">        dispatch_semaphore_signal(sema);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_async(concurrent_queue, ^&#123;</div><div class="line">        for (int index = 0; index&lt;1000 ; index++) &#123;</div><div class="line">            dict[@(index)] = @(0);</div><div class="line">        &#125;</div><div class="line">        dispatch_semaphore_signal(sema);</div><div class="line">    &#125;);</div><div class="line">    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);</div><div class="line">    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);</div><div class="line">    </div><div class="line">    NSLog(@&quot;dict is %@&quot;, dict);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是，直接崩了。。<br>因为<code>NSMutableDictionary</code>不是线程安全的，任意一个线程在往字典里写入数据的时候是不允许有其他线程访问的，不管是读或者写都不可以。<br>所以，现在的任务就是，我们需要使用gcd来实现一个线程安全的NSMutableDictionary。  </p>
+<h4 id="第一个方案，serial-queue-dispatch-async"><a href="#第一个方案，serial-queue-dispatch-async" class="headerlink" title="第一个方案，serial queue + dispatch_async"></a>第一个方案，serial queue + dispatch_async</h4><p>首先，串行队列能保证每一个读或者写操作都是按顺序执行的，并且会在同一个线程执行任务，dispatch_async又能保证读写操作均能在异步线程执行，所以不会卡当前线程。所以表面上看是没问题的。<br>关键的问题是，太慢了,因为你每次只会有一个线程读或者写。如果同时有一百个读的请求，那么你的数据必须要按照顺序，一个一个的读出来。所以这个方案行不通。  </p>
+<h4 id="第二个方案，concurrent-queue-dispatch-async"><a href="#第二个方案，concurrent-queue-dispatch-async" class="headerlink" title="第二个方案，concurrent queue + dispatch_async"></a>第二个方案，concurrent queue + dispatch_async</h4><p>用这个方案意味着，我们可以多线程同时读取字典里的数据。但是我们得确保一个条件。我们读取字典数据的时候，必须保证没有别的线程在写。<br>所以，确定读取线程安全的条件变成了，如何迫使写的这个操作在同一时刻，只有一个线程在写，并且，没有其他线程读或者写。那么，当然可以用dispatch_barrier_async来实现我们的需求了。<br>为什么dispatch_barrier_async可以实现我们的需求？<br>想一下dispatch_barrier_async的几个特性。<br> 同一个队列中，只要插入了一个barrier，那么在他之后的所有任务都必须等他完成了才可以继续。所以，只要我们保证所有写操作都在barrier里完成，那么，我们不可能在一个concurrent queue里同时有多个线程在往字典里写数据。因为假如有多个写的操作，每一个写操作总会等待前一个写操作完成之后才执行。<br>所以代码如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">typedef void (^ThreadSafeDictionaryBlock)(ThreadSafeDictionary *dict, NSString *key, id object);</div><div class="line"></div><div class="line">@interface ThreadSafeDictionary ()</div><div class="line">&#123;</div><div class="line">    dispatch_queue_t concurrentQueue;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ThreadSafeDictionary</div><div class="line"></div><div class="line">- (id)init</div><div class="line">&#123;</div><div class="line">    if (self = [super init]) &#123;</div><div class="line">        concurrentQueue = dispatch_queue_create(&quot;www.reviewcode.cn&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)objectForKey:(id)aKey block:(ThreadSafeDictionaryBlock)block</div><div class="line">&#123;</div><div class="line">    id key = [aKey copy];</div><div class="line">    __weak __typeof__(self) weakSelf = self;</div><div class="line">    dispatch_async(concurrentQueue, ^&#123;</div><div class="line">        ThreadSafeDictionary *strongSelf = weakSelf;</div><div class="line">        if (!strongSelf)</div><div class="line">            return;</div><div class="line">        id object = [self objectForKey:key];</div><div class="line">        block(self, key, object);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setObject:(id)object forKey:(NSString *)key block:(ThreadSafeDictionaryBlock)block</div><div class="line">&#123;</div><div class="line">    if (!key || !object)</div><div class="line">        return;</div><div class="line">    </div><div class="line">    NSString *akey = [key copy];</div><div class="line">    __weak ThreadSafeDictionary *weakSelf = self;</div><div class="line">    </div><div class="line">    dispatch_barrier_async(concurrentQueue, ^&#123;</div><div class="line">        __strong typeof(weakSelf)strongSelf = weakSelf;;</div><div class="line">        if (!strongSelf)</div><div class="line">            return;</div><div class="line">        [self setObject:object forKey:akey];</div><div class="line">     </div><div class="line">        if (block) &#123;</div><div class="line">            block(strongSelf, akey, object);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>这里可能会有人存疑，外部用<code>__weak</code>关键在声明weakSelf这个没什么问题，防止retain cycle。但里面为什么又用<code>__strong</code>声明了一个strongSelf？</p>
+<p>这是因为，你享受了weak的好处，同时也要承担风险，由于不持有这个weakSelf，所以你无法保证在代码运行过程中，self不会被释放。</p>
+<p>那可能又有人问了，你在外部用weak声明的原因是防止retain cycle，结果又在里面声明了一个strong，那不相当于做无用功了么。但问题是，在block内部声明的strongSelf是局部变量，他的生命周期只是在block内而已，当block执行完它自动就被销毁了。所以不会造成retain cycle。</p>
+<p>还有一个问题，如果在第一句<code>__strong typeof(weakSelf)strongSelf = weakSelf;</code>的时候weakSelf已经被销毁了怎么办？</p>
+<p>你没看我下面有个<code>if(！strongSelf)</code>么？不就是应对这种情况的。</p>
+<h2 id="dispatch-semaphore"><a href="#dispatch-semaphore" class="headerlink" title="dispatch_semaphore"></a>dispatch_semaphore</h2><p>信号量。<br>信号量的用法相当简单。<br>一共有三个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_create =&gt; 创建一个信号量</div><div class="line">dispatch_semaphore_signal =&gt; 发送一个信号</div><div class="line">dispatch_semaphore_wait =&gt; 等待信号</div></pre></td></tr></table></figure>
+<p>dispatch_semaphore的使用场景是处理并发控制。<br>如果感觉不是很明白的话，想想<code>NSOperationQueue</code>的一个属性，<code>maxConcurrentOperationCount</code>.这个属性的意思就是设定NSOperationQueue里的NSOperation同时运行的最大数量。</p>
+<p>我们的信号量也可以实现同样的功能。<br>首先，创建一个信号量。<br><code>dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</code><br>创建方法里会传入一个long型的参数，这个东西你可以想象是一个库存。有了库存才可以出货。<br><code>dispatch_semaphore_wait</code>，就是每运行一次，会先清一个库存，如果库存为0，那么根据传入的等待时间，决定等待增加库存的时间，如果设置为DISPATCH_TIME_FOREVER,那么意思就是永久等待增加库存，否则就永远不往下面走。<br><code>dispatch_semaphore_signal</code>，就是每运行一次，增加一个库存。<br>那么下面的代码运行起来会是怎样的结果呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</div><div class="line">    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">    NSLog(@&quot;等待semaphore&quot;);</div></pre></td></tr></table></figure>
+<p>结果就是，<code>等待semaphore</code>这句话永远不会输出。原因有两个。</p>
+<ol>
+<li>你初始化信号量的时候，并没有库存，也就是你传入的值是0.</li>
+<li>你传入等待增加库存的时间是<code>DISPATCH_TIME_FOREVER</code>，也就是说，除非有地方运行了<code>dispatch_semaphore_signal</code>增加了库存，否则我永远等待下去。<br>基于上述的两个原因，导致了程序不往下走了。</li>
+</ol>
+<p>所以，其实这样的特性可以帮助我们完成一个功能，测试异步网络请求是否成功。<br>比如，在以前写Unit Test测试网络请求的时候，我们常常这么写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (void)downloadImageURLWithString:(NSString *)URLString</div><div class="line">&#123;</div><div class="line">    // 1</div><div class="line">    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);</div><div class="line"> </div><div class="line">    NSURL *url = [NSURL URLWithString:URLString];</div><div class="line">    __unused Photo *photo = [[Photo alloc]</div><div class="line">                             initwithURL:url</div><div class="line">                             withCompletionBlock:^(UIImage *image, NSError *error) &#123;</div><div class="line">                                 if (error) &#123;</div><div class="line">                                     XCTFail(@&quot;%@ failed. %@&quot;, URLString, error);</div><div class="line">                                 &#125;</div><div class="line"> </div><div class="line">                                 // 2</div><div class="line">                                 dispatch_semaphore_signal(semaphore);</div><div class="line">                             &#125;];</div><div class="line"> </div><div class="line">    // 3</div><div class="line">    dispatch_time_t timeoutTime = dispatch_time(DISPATCH_TIME_NOW, 5);</div><div class="line">    if (dispatch_semaphore_wait(semaphore, timeoutTime)) &#123;</div><div class="line">        XCTFail(@&quot;%@ timed out&quot;, URLString);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解释一下。</p>
+<ol>
+<li>我们创建了一个信号量，并且传入的参数为0，可以想象现在是0库存.</li>
+<li>开启了一个异步线程下载网络数据，在回调的block中判断error是否为nil。如果为nil，直接使用<code>XCTFail</code>，报错。如果成功了。那么增加一个库存，告诉信号量，好了，现在有库存了。你可以继续运货了。</li>
+<li>设置一个超时时间，5秒钟，这个是干嘛的呢？这个是告诉信号量，我等待库存增加的时间只有5秒钟，如果超过了五秒钟，我就报错。怎么判断是否超过5秒钟呢？<code>dispatch_semaphore_wait(semaphore, timeoutTime)</code> ，如果超过了5秒钟，那么这个方法会返回一个非0的长整型。</li>
+</ol>
+<p>这样，我们就可以给一个网络接口写单元测试了。</p>
+<p>上文我们提到过，信号量的主要功能还是控制并发量，可以实现类似于NSOperationQueue的功能。那么我现在尝试实现一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@implementation CustomOperationQueue</div><div class="line"></div><div class="line">- (id)initWithConcurrentCount:(int)count</div><div class="line">&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self)</div><div class="line">    &#123;</div><div class="line">        if (count &lt; 1) count = 5;</div><div class="line">        semaphore = dispatch_semaphore_create(count);</div><div class="line">        queue = Dispatch_queue_create(&quot;com.zangqilong.www&quot;, DISPATCH_QUEUE_CONCURRENT);</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)init</div><div class="line">&#123;</div><div class="line">    return [self initWithConcurrentCount:5];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)addTask:(CallBackBlock)block</div><div class="line">&#123;</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);</div><div class="line">        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 0), ^&#123;</div><div class="line">            block();</div><div class="line">            dispatch_semaphore_signal(semaphore);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>我们把注意力放在<code>- (void)addTask:(CallBackBlock)block</code>这个方法里。</p>
+<ol>
+<li>我们创建了一个初始库存是5的一个信号量</li>
+<li>在addTask方法里，由于我们的初始库存是5，所以第一次添加了一个任务之后，<code>dispatch_semaphore_wait</code>会直接放行，并减少一个库存，所以现在库存是4，然后，每当我们完成一个任务，也就意味着，我们可以把库存还回去了。所以就会调用<code>dispatch_semaphore_signal</code>去增加一个库存。</li>
+<li>那么，如果我们的每一个任务耗时都相当长，所以我们是一直消耗库存但是没有还回库存，所以当添加到第6个任务的时候，这个时候由于库存已经为0，所以wait方法会一直等待，不执行第六个任务，直到有前面的任务完成，库存大于0，这时候才会执行第六个任务。</li>
+</ol>
+<p>这样，我们就完成了并发量的控制。</p>
+<h2 id="dispatch-group"><a href="#dispatch-group" class="headerlink" title="dispatch_group"></a>dispatch_group</h2><p>直接看代码  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">dispatch_group_t serviceGroup = dispatch_group_create();</div><div class="line"></div><div class="line">// 开始第一个请求</div><div class="line">// 进入组</div><div class="line">dispatch_group_enter(serviceGroup);</div><div class="line">[self.configService startWithCompletion:^(ConfigResponse *results, NSError* error)&#123;</div><div class="line">    configError = error;</div><div class="line">    // 离开组</div><div class="line">    dispatch_group_leave(serviceGroup);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 开始第二个请求</div><div class="line">// 先进入组</div><div class="line">dispatch_group_enter(serviceGroup);</div><div class="line">[self.preferenceService startWithCompletion:^(PreferenceResponse *results, NSError* error)&#123;</div><div class="line">    // 离开组</div><div class="line">    preferenceError = error;</div><div class="line">    dispatch_group_leave(serviceGroup);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 当小组里的任务都清空以后，通知主线程完成了所有任务</div><div class="line">dispatch_group_notify(serviceGroup,dispatch_get_main_queue(),^&#123;</div><div class="line">    // Assess any errors</div><div class="line">    NSError *overallError = nil;</div><div class="line">    if (configError || preferenceError)</div><div class="line">    &#123;</div><div class="line">        // Either make a new error or assign one of them to the overall error</div><div class="line">        overallError = configError ?: preferenceError;</div><div class="line">    &#125;</div><div class="line">    // Now call the final completion block</div><div class="line">    completion(overallError);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个<code>dispatch_group</code>最常见的功能就是，一个页面有多个异步网络请求，如何监测所有任务都完成了。<br>这个方法相信大家都会用。<br>那么需要注意的是。这里的网络请求回调只有一个block，所以无论请求出错还是成功了，只需要写一次<code>dispatch_group_leave</code>,但是如果你的回调block有两个，分成功的回调和错误的回调，那么你必须在两个block里都写<code>disptach_group_leave</code>,因为你不知道你的请求到底会走成功的block还是失败的block，如果少写了，一旦某个请求失败了，那么你的notify方法就永远也不会执行了。<br>p.s.如有侵权请告诉我</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/07/05/gcd学习/" data-id="cj6wyl6a0000ajizo0g8dkfdg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Node-js-webapi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/Node-js-webapi/" class="article-date">
+  <time datetime="2016-04-06T05:46:57.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/06/Node-js-webapi/">Node.js webapi</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">RESTful API  </div><div class="line">  </div><div class="line">GET  /products  </div><div class="line">  </div><div class="line">var express = require(&apos;express&apos;)  </div><div class="line">var app = express();  </div><div class="line">  </div><div class="line">var products = [  </div><div class="line">   &#123; name: &apos;apple juice&apos;, description: &apos;good&apos;, price: 12.12 &#125;,  </div><div class="line">   &#123; name: &apos;banana juice&apos;, description: &apos;just so sos&apos;, price: 4.50 &#125;  </div><div class="line">]  </div><div class="line">  </div><div class="line">app.get(&apos;/products&apos;, function(req, res) &#123;  </div><div class="line">   res.json(products);  </div><div class="line">&#125;);  </div><div class="line">  </div><div class="line">var server = app.listen(3000, function() &#123;  </div><div class="line">   console.log(&apos;listening on port %d&apos;, server.address().port);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">GET /products/:id =&gt; 200  </div><div class="line">  </div><div class="line">app.get(&apos;/products/:id&apos;, function(req, res) &#123;  </div><div class="line">   res.json(products[req.params.id]);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">GET /products/:id =&gt; 404  </div><div class="line">  </div><div class="line">app.get(&apos;/products/:id&apos;, function(req, res) &#123;  </div><div class="line">   if (products.length &lt;= req.params.id || req.params.id &lt; 0) &#123;  </div><div class="line">      res.statusCode = 404;  </div><div class="line">      return res.send(&apos;Error 404: No products found&apos;)  </div><div class="line">   &#125;  </div><div class="line">   res.json(products[req.params.id]);  </div><div class="line">&#125;)  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">POST /products =&gt; 201  </div><div class="line">  </div><div class="line">因为我们在接受POST请求的时候，需要解析POST的body，所以，我们就要使用middleware来做这件事情，在早期版本中提供了bodyParser这样的方式。但是这种方式会创建大量的临时文件。所以，我们应该直接使用json或者urlencoded这样的middleware直接解析  </div><div class="line">  </div><div class="line">在package.json中添加依赖：  </div><div class="line">  </div><div class="line">    &quot;body-parser&quot;: &quot;1.4.3&quot;  </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">var express = require(&apos;express&apos;),  </div><div class="line">   bodyParser = require(&apos;body-parser&apos;)  </div><div class="line">  </div><div class="line">var app = express()  </div><div class="line">   .use(bodyParser.json());  </div><div class="line">  </div><div class="line">app.post(&apos;/products&apos;, function(req, res) &#123;  </div><div class="line">   var newProduct = &#123;  </div><div class="line">      name: req.param(&apos;name&apos;),  </div><div class="line">      description: req.param(&apos;description&apos;),  </div><div class="line">      price: req.param(&apos;price&apos;)  </div><div class="line">   &#125;  </div><div class="line">  </div><div class="line">   products.push(newProduct);  </div><div class="line">   res.statusCode = 201;  </div><div class="line">   res.location(&apos;/products/&apos; + products.length);  </div><div class="line">   res.json(true);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/04/06/Node-js-webapi/" data-id="cj6wyl69x0008jizo82n1nxhz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Net推送证书制作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/Net推送证书制作/" class="article-date">
+  <time datetime="2016-04-06T05:27:12.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/06/Net推送证书制作/">.Net推送证书制作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="net-推送证书的制作"><a href="#net-推送证书的制作" class="headerlink" title=".net 推送证书的制作"></a>.net 推送证书的制作</h4><pre><code>使用OpenSSL （使用环境：Mac Os X 10.9 命令行工具）
+</code></pre><h5 id="将aps-developer-identity-cer转换成-aps-developer-identity-pem格式。-红色部门及从开发证书下载下来对应两个环境：（dev或者distribution（push））"><a href="#将aps-developer-identity-cer转换成-aps-developer-identity-pem格式。-红色部门及从开发证书下载下来对应两个环境：（dev或者distribution（push））" class="headerlink" title="将aps_developer_identity.cer转换成 aps_developer_identity.pem格式。//红色部门及从开发证书下载下来对应两个环境：（dev或者distribution（push））"></a>将aps_developer_identity.cer转换成 aps_developer_identity.pem格式。//红色部门及从开发证书下载下来对应两个环境：（dev或者distribution（push））</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl x509 -in aps_developer_identity.cer -inform DER -out aps_developer_identity.pem -outform PEM</div></pre></td></tr></table></figure>
+<h5 id="将p12格式的私钥转换成pem，需要设置4次密码，密码都设置为：dynastech。"><a href="#将p12格式的私钥转换成pem，需要设置4次密码，密码都设置为：dynastech。" class="headerlink" title="将p12格式的私钥转换成pem，需要设置4次密码，密码都设置为：dynastech。"></a>将p12格式的私钥转换成pem，需要设置4次密码，密码都设置为：dynastech。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl pkcs12 -nocerts -out PushChat_Noenc.pem -in PushChat.p12  //这个是在mac os x的钥匙串中导出的推送证书的.p12，默认是需要输入私钥密码的，可以输入空的密码</div></pre></td></tr></table></figure>
+<h5 id="用certificate和the-key-创建PKCS-12格式的文件。"><a href="#用certificate和the-key-创建PKCS-12格式的文件。" class="headerlink" title="用certificate和the key 创建PKCS#12格式的文件。"></a>用certificate和the key 创建PKCS#12格式的文件。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">openssl pkcs12 -export -in aps_developer_identity.pem -inkey PushChat_Noenc.pem -certfile PushChat.certSigningRequest -name &quot;aps_developer_identity&quot; -out aps_developer_identity.p12</div><div class="line">//将三个颜色的文件合成 xxxxxx.p12后，就可以提供给.net程序调用了，然后在.net程序中需要设置xxxxx.p12默认复制到输出。</div></pre></td></tr></table></figure>
+<p>这样我们就得到了在.net应用程序中使用的证书文件：aps_developer_identity.p12。</p>
+<h4 id="PHP证书的制作参见-iOS远程推送通知-pdf"><a href="#PHP证书的制作参见-iOS远程推送通知-pdf" class="headerlink" title="PHP证书的制作参见  iOS远程推送通知.pdf"></a>PHP证书的制作参见  iOS远程推送通知.pdf</h4><h4 id="XX环境中使用到的有关文件"><a href="#XX环境中使用到的有关文件" class="headerlink" title="XX环境中使用到的有关文件"></a>XX环境中使用到的有关文件</h4><p>（为了方便，我改名为PushChat.cer 以及 PushChat.p12,名字可以随便改）</p>
+<h4 id="具体三方推送平台的引入（百度推送、极光推送），只需要按照要求制作证书上传到对应的平台，即可使用，目前是苹果端使用的原生的推送机制，Android使用的极光推送。"><a href="#具体三方推送平台的引入（百度推送、极光推送），只需要按照要求制作证书上传到对应的平台，即可使用，目前是苹果端使用的原生的推送机制，Android使用的极光推送。" class="headerlink" title="具体三方推送平台的引入（百度推送、极光推送），只需要按照要求制作证书上传到对应的平台，即可使用，目前是苹果端使用的原生的推送机制，Android使用的极光推送。"></a>具体三方推送平台的引入（百度推送、极光推送），只需要按照要求制作证书上传到对应的平台，即可使用，目前是苹果端使用的原生的推送机制，Android使用的极光推送。</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/04/06/Net推送证书制作/" data-id="cj6wyl69v0007jizo367r0zfd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JSPatch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/JSPatch/" class="article-date">
+  <time datetime="2016-04-05T14:24:25.000Z" itemprop="datePublished">2016-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/05/JSPatch/">JSPatch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by chenyun on 15/7/7.</div><div class="line"> */</div><div class="line">require(&apos;UIColor,UIViewController,NSNumber,UIView&apos;)</div><div class="line"></div><div class="line">/**</div><div class="line"> * 进行 tableveiw 数据源的替换</div><div class="line"> */</div><div class="line">defineClass(&apos;TestTableViewController&apos;,</div><div class="line">            &#123;</div><div class="line">            tableView_cellForRowAtIndexPath: function(tableView, indexPath)</div><div class="line">            &#123;</div><div class="line">            var cell = tableView.dequeueReusableCellWithIdentifier(&quot;CELL&quot;);</div><div class="line">            if(!cell)&#123;</div><div class="line">            cell = require(&apos;UITableViewCell&apos;).alloc().initWithStyle_reuseIdentifier(0,&quot;CELL&quot;);</div><div class="line">            &#125;</div><div class="line">            //            var num = self.dataSource().objectAtIndex(indexPath.row())</div><div class="line">            //            cell.textLabel().setText(num + &quot;js&quot;)</div><div class="line">            var jsArray    = self.dataSource().toJS()</div><div class="line">            cell.textLabel().setText(jsArray[indexPath.row()] + &quot;JS&quot;)</div><div class="line">            return cell;</div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            )</div><div class="line"></div><div class="line">/**</div><div class="line"> * 事件替换</div><div class="line"> */</div><div class="line">defineClass(&apos;TestViewController&apos;,</div><div class="line">            &#123;</div><div class="line">            tableView_didSelectRowAtIndexPath: function(tableView, indexPath)</div><div class="line">            &#123;</div><div class="line">            if(indexPath.section() == 1 &amp;&amp; indexPath.row() == 0)&#123;</div><div class="line">            var testVC = self.storyboard().instantiateViewControllerWithIdentifier(&quot;testVC&quot;);</div><div class="line">            self.navigationController().pushViewController_animated(testVC,1)</div><div class="line">            &#125;</div><div class="line">            if(indexPath.section() == 1 &amp;&amp; indexPath.row() == 1)&#123;</div><div class="line">            </div><div class="line">            var tableVC = JSTableViewController.alloc().init()</div><div class="line">            self.navigationController().pushViewController_animated(tableVC,YES);</div><div class="line">            </div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">            )</div><div class="line"></div><div class="line">/**</div><div class="line"> * 声明一个类</div><div class="line"> */</div><div class="line">defineClass(&apos;JSTableViewController:UITableViewController&apos;,&#123;</div><div class="line">            dataSource:function()</div><div class="line">            &#123;</div><div class="line">            var data = self.getProp(&apos;data&apos;)</div><div class="line">            if(data)return data;</div><div class="line">            var data = [];</div><div class="line">            for(var i = 0 ; i &lt; 12;i++)</div><div class="line">            &#123;</div><div class="line">            data.push(&quot;from js &quot; + i)</div><div class="line">            &#125;</div><div class="line">            self.setProp_forKey(data,&apos;data&apos;)</div><div class="line">            return data;</div><div class="line">            &#125;,</div><div class="line">            numberOfSectionsInTableView: function(tableView) &#123;</div><div class="line">            return 1;</div><div class="line">            &#125;,</div><div class="line">            tableView_numberOfRowsInSection: function(tableView, section) &#123;</div><div class="line">            return self.dataSource().count();</div><div class="line">            &#125;,</div><div class="line">            tableView_cellForRowAtIndexPath: function(tableView, indexPath) &#123;</div><div class="line">            var cell = tableView.dequeueReusableCellWithIdentifier(&quot;cell&quot;)</div><div class="line">            if (!cell) &#123;</div><div class="line">            cell = require(&apos;UITableViewCell&apos;).alloc().initWithStyle_reuseIdentifier(0, &quot;cell&quot;)</div><div class="line">            &#125;</div><div class="line">            cell.textLabel().setText(self.dataSource().objectAtIndex(indexPath.row()))</div><div class="line">            return cell</div><div class="line">            &#125;,</div><div class="line">            tableView_heightForRowAtIndexPath: function(tableView, indexPath) &#123;</div><div class="line">            return 60</div><div class="line">            &#125;,</div><div class="line">            tableView_didSelectRowAtIndexPath: function(tableView, indexPath) &#123;</div><div class="line">            var alertView = require(&apos;UIAlertView&apos;).alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(&quot;Alert&quot;,self.dataSource().objectAtIndex(indexPath.row()), self, &quot;OK&quot;, null);</div><div class="line">            alertView.show()</div><div class="line">            &#125;</div><div class="line">            &#125;)</div><div class="line"></div><div class="line">/**</div><div class="line"> * 重写 btn 点击事件</div><div class="line"> */</div><div class="line">defineClass(&apos;SomeTestViewController&apos;,</div><div class="line">            &#123;</div><div class="line">            /**</div><div class="line">             * 系统方法</div><div class="line">             * @param animated</div><div class="line">             */</div><div class="line">            viewWillAppear:function(animated)&#123;</div><div class="line">            self.super().viewWillAppear(1)</div><div class="line">            self.setTitle(&quot;JSPatch Methods&quot;)</div><div class="line">            </div><div class="line">            &#125;,</div><div class="line">            </div><div class="line">            /**</div><div class="line">             * 执行一段动画</div><div class="line">             * @param sender</div><div class="line">             */</div><div class="line">            doAnimation:function(sender)&#123;</div><div class="line">            </div><div class="line">            var red = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var green = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var blue = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var color = UIColor.colorWithRed_green_blue_alpha(red,green,blue,1)</div><div class="line">            </div><div class="line">            UIView.animateWithDuration_animations_completion(1.0,block(&quot;&quot;,function()&#123;</div><div class="line">                                                                       self.view().setBackgroundColor(color)&#125;)</div><div class="line">                                                             ,block(&quot;BOOL&quot;,function(finished)&#123;&#125;));</div><div class="line">            </div><div class="line">            &#125;,</div><div class="line">            </div><div class="line">            /**</div><div class="line">             * 背景色改变</div><div class="line">             * @param sender</div><div class="line">             */</div><div class="line">            changeBackgroundColor:function(sender)&#123;</div><div class="line">            var red = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var green = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var blue = Math.floor(Math.random() * ( 255 +0.1))/255;</div><div class="line">            var color = UIColor.colorWithRed_green_blue_alpha(red,green,blue,1)</div><div class="line">            self.view().setBackgroundColor(color)</div><div class="line">            &#125;,</div><div class="line">            </div><div class="line">            /**</div><div class="line">             * 增加控件</div><div class="line">             * @param sender</div><div class="line">             */</div><div class="line">            addView:function(sender)&#123;</div><div class="line">            var xx = Math.floor(Math.random() * (320 + 1))</div><div class="line">            var yy = Math.floor(Math.random() * (640 + 1))</div><div class="line">            </div><div class="line">            var aView = require(&apos;UIView&apos;).alloc().initWithFrame(&#123;x:xx,y:yy,width:50,height:50&#125;)</div><div class="line">            aView.setBackgroundColor(UIColor.redColor())</div><div class="line">            self.view().addSubview(aView)</div><div class="line">            &#125;,</div><div class="line">            alert:function(sender)&#123;</div><div class="line">            var alertView = require(&apos;UIAlertView&apos;).alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(&quot;Alert&quot;,&quot;test&quot;, self, &quot;OK&quot;, null);</div><div class="line">            alertView.show()</div><div class="line">            &#125;,</div><div class="line">            alertView_willDismissWithButtonIndex: function(alertView, idx) &#123;</div><div class="line">            console.log(&apos;click btn &apos;)</div><div class="line">            &#125;</div><div class="line">            &#125;)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2016/04/05/JSPatch/" data-id="cj6wyl69r0004jizo6rqgsqz5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS策略模式的简单应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/25/iOS策略模式的简单应用/" class="article-date">
+  <time datetime="2014-11-25T03:28:01.000Z" itemprop="datePublished">2014-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/25/iOS策略模式的简单应用/">iOS策略模式的简单应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在iOS开发中，使用官方框架，官方sdk中，可以接触到不少设计模式，可能平时没有注意，实际上已经用到了不少设计模式</p>
+<p>下面举一个例子：</p>
+<p>策略模式：至于什么是策略模式，请自己百度吧，我也说不清楚，但是知道怎么用，下面结合代码详细说明</p>
+<p>比方我有一个NSMutableArray，里面每个元素都是一个NSDictionary，其中NSDictionary有不少“键－－值”对，我想以“键1对应的值1”为标准，对NSMutableArray进行排序。<br>NSMutableArray</p>
+<p>－－－ NSDictionary1</p>
+<pre><code>－－－－－－“name”:&quot;zhangsan&quot;
+
+－－－－－－“age”：“30”
+</code></pre><p>－－－ NSDictionary2</p>
+<pre><code>－－－－－－“name”:&quot;lisi&quot;
+
+－－－－－－“age”：“28“
+</code></pre><p>－－－ NSDictionary3</p>
+<pre><code>－－－－－－“name”:&quot;lisi&quot;
+
+－－－－－－“age”：“48“
+</code></pre><p>​      </p>
+<p>下面我需要针对”age“字段进行排序</p>
+<p>那么策略模式在这里就是这么展示的：你丢给NSMutableArray对象一个排序的方法(一个策略),那么他就拿这个方法对内部的元素进行排序，你丢给他不同的方法(也就是不同的策略&lt;实际的每个策略，不简单是一个参数，而是做一件事情的完整过程&gt;)，他就给你不同的结果。</p>
+<p>NSArray中存放的是NSDictionary,可以使用策略的方法对NSDictionary进行定制，增加比较的方法。然后调用NSArray的sortUsingSelector方法对数组进行排序,这里使用NSDictionay中的时间对象的时间排序。具体操作如下:</p>
+<p>XXX.h文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@interface NSMutableDictionary(myCompare)</div><div class="line"></div><div class="line">-(NSComparisonResult)myCompareMethodWithDict: (NSMutableDictionary*)theOtherDict;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>XXX.m文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@implementation NSMutableDictionary(myCompare)</div><div class="line"></div><div class="line">- (NSComparisonResult)myCompareMethodWithDict:(NSMutableDictionary*)anotherDict</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">        NSMutableDictionary *firstDict = self;</div><div class="line"></div><div class="line">        int iSelfAge =[ [firstDict objectForKey: @&quot;age&quot;]intValue];</div><div class="line"></div><div class="line">        int iOtherAge = [[anotherDict objectForKey: @&quot;age&quot;]intValue];</div><div class="line"></div><div class="line">        </div><div class="line"></div><div class="line">        //return [firstDate compare: secondDate];</div><div class="line"></div><div class="line">       //       //NSOrderedAscending = -1, NSOrderedSame, NSOrderedDescending&#125;</div><div class="line"></div><div class="line">       if(iSelgAge&lt;iOtherAge)return NSOrderedAscending;</div><div class="line"></div><div class="line">     else if (iSelgAge==iOtherAge)return NSOrderedSame; </div><div class="line"></div><div class="line">    else return NSOrderedDescending;</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p> 2.使用myCompareMethodWithDict对NSArray进行排序，假设NSArray是从plist文件中读取的NSDictionary对象的数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    NSString* documentsDirectory = [paths objectAtIndex:0];</div><div class="line">	NSString *plistPath = [NSString stringWithFormat:@&quot;%@/XXX.plist&quot;,documentsDirectory];</div><div class="line">     NSMutableDictionary * cacheData = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];</div><div class="line">     [cacheArray sortUsingSelector:@selector(myCompareMethodWithDict:)];//根据年龄降序排序</div><div class="line">这样，cacheArray就是排序好的数组了。</div></pre></td></tr></table></figure>
+<hr>
+<pre><code>最近做的一个通讯录应用中有个需求需要对用户展示的位置进行排序。返回的数据json解析后存在了sqlite的[数据库](http://lib.csdn.net/base/14)中了。
+</code></pre><p>那么解决的方法有两种</p>
+<p>1，sql排序 ：没有什么新的东西，主要学习了在sqlite中用sql语句实现left join,union的相关操作，在Xcode中sql语句太长了显得不太好看，那么推荐navi猫中把业务处理好后再粘贴到Xcode中进行修改</p>
+<p>2，策略模式：对mutalbeArray的元素（这里并不是你一个Dictionnary,而是一个自定义的Model）我们同样可以给这个mutalbeArray中的元素一个策略。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2014/11/25/iOS策略模式的简单应用/" data-id="cj6wyl6a6000gjizo3tozhtvu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS-长后台" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/17/iOS-长后台/" class="article-date">
+  <time datetime="2014-09-17T05:53:40.000Z" itemprop="datePublished">2014-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/iOS-长后台/">iOS 长后台</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>研究iOS长后台，卡壳太久了，记得是去年给某药业做一个移动外勤app，需要iOS保持后台在线。尝试了网上给出的各种方法，有的只能在插上电源的时候一直跑，但是掉了电，过不了几分钟就背杀掉了。</p>
+<pre><code>这里也不用iOS7的一些方法，在进入后台的时候直接申请一个后台任务。同时开启一个定时器去检测（作者给出的检测时间是1min），检测到后台任务的时间比较小的时候，转载的文章给出的值是61s。当小于这个值的时候，这个时候来播放一段无声的音乐文件。播放的同时，再来申请后台的任务，这样就不会被苹果干掉了。
+</code></pre><p>但是有一个缺点，如果你的应用没有播放音乐的功能，只是为了长后台而加上，有可能是无法上架的。但是对于企业应用来说这已经足够你使用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions  </div><div class="line">&#123;  </div><div class="line">      </div><div class="line">      </div><div class="line">    NSError *error = nil;  </div><div class="line">    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&amp;error];  </div><div class="line">      </div><div class="line">    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(tik) userInfo:nil repeats:YES];  </div><div class="line">    // Override point for customization after application launch.  </div><div class="line">    return YES;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)tik&#123;  </div><div class="line">      </div><div class="line">    if ([[UIApplication sharedApplication] backgroundTimeRemaining] &lt; 61.0)  </div><div class="line">    &#123;  </div><div class="line">        [self longTimeTask];  </div><div class="line">        [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (void)longTimeTask  </div><div class="line">&#123;  </div><div class="line">    NSString *musicFilePath = [[NSBundle mainBundle] pathForResource:@&quot;SlientAudio&quot; ofType:@&quot;wav&quot;]; //创建音乐文件路径  </div><div class="line">    NSURL *musicURL = [[NSURL alloc] initFileURLWithPath:musicFilePath];  </div><div class="line">     </div><div class="line">    if (_myBackMusic == nil)  </div><div class="line">    &#123;  </div><div class="line">        AVAudioPlayer *thePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicURL error:nil];  </div><div class="line">        //创建播放器  </div><div class="line">        self.myBackMusic = thePlayer; //赋值给自己定义的类变量  </div><div class="line">    &#125;  </div><div class="line">    [self.myBackMusic prepareToPlay];  </div><div class="line">   //[self.myBackMusic setVolume:1]; //设置音量大小  </div><div class="line">   // thePlayer.numberOfLoops = -1;//设置音乐播放次数 -1为一直循环  </div><div class="line">    [self.myBackMusic play]; //播放  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://my.oschina.net/u/1386081/blog/277380" target="_blank" rel="external">http://my.oschina.net/u/1386081/blog/277380</a></p>
+<hr>
+<p><a href="http://pan.baidu.com/s/1pJM9gSj" target="_blank" rel="external">http://pan.baidu.com/s/1pJM9gSj</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2014/09/17/iOS-长后台/" data-id="cj6wyl6a3000djizomyyrc28o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

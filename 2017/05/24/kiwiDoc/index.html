@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>kiwiDoc | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kiwi人脸跟踪SDK快速集成指南(iOS)kiwi人脸跟踪SDK，主要功能包括：  静态图片的人脸以及关键点位置检测 68个人脸关键点的实时检测与跟踪（单人脸/多人脸） 美颜、哈哈镜等实时滤镜功能 人脸Pose参数估计 趣味2D贴纸  我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。 流程图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kiwiDoc">
+<meta property="og:url" content="/2017/05/24/kiwiDoc/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="Kiwi人脸跟踪SDK快速集成指南(iOS)kiwi人脸跟踪SDK，主要功能包括：  静态图片的人脸以及关键点位置检测 68个人脸关键点的实时检测与跟踪（单人脸/多人脸） 美颜、哈哈镜等实时滤镜功能 人脸Pose参数估计 趣味2D贴纸  我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。 流程图">
+<meta property="og:image" content="/2017/05/24/kiwiDoc/images/IOSpixelbuffer.png">
+<meta property="og:image" content="/2017/05/24/kiwiDoc/images/ios-project.jpg">
+<meta property="og:image" content="/2017/05/24/kiwiDoc/images/31.pic_hd.jpg">
+<meta property="og:image" content="/2017/05/24/kiwiDoc/images/33.pic_hd.jpg">
+<meta property="og:updated_time" content="2017-05-24T06:48:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kiwiDoc">
+<meta name="twitter:description" content="Kiwi人脸跟踪SDK快速集成指南(iOS)kiwi人脸跟踪SDK，主要功能包括：  静态图片的人脸以及关键点位置检测 68个人脸关键点的实时检测与跟踪（单人脸/多人脸） 美颜、哈哈镜等实时滤镜功能 人脸Pose参数估计 趣味2D贴纸  我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。 流程图">
+<meta name="twitter:image" content="/2017/05/24/kiwiDoc/images/IOSpixelbuffer.png">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-kiwiDoc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/kiwiDoc/" class="article-date">
+  <time datetime="2017-05-24T06:39:19.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      kiwiDoc
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kiwi人脸跟踪SDK快速集成指南-iOS"><a href="#Kiwi人脸跟踪SDK快速集成指南-iOS" class="headerlink" title="Kiwi人脸跟踪SDK快速集成指南(iOS)"></a>Kiwi人脸跟踪SDK快速集成指南(iOS)</h1><p>kiwi人脸跟踪SDK，主要功能包括：</p>
+<ul>
+<li>静态图片的人脸以及关键点位置检测</li>
+<li>68个人脸关键点的实时检测与跟踪（单人脸/多人脸）</li>
+<li>美颜、哈哈镜等实时滤镜功能</li>
+<li>人脸Pose参数估计</li>
+<li>趣味2D贴纸</li>
+</ul>
+<p>我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>  <img src="images/IOSpixelbuffer.png" alt=""></p>
+<p>这个文档将演示如何利用我们的demo快速入门，并详细描述具体集成步骤。</p>
+<h2 id="Demo快速入门"><a href="#Demo快速入门" class="headerlink" title="Demo快速入门"></a>Demo快速入门</h2><p>该demo基于七牛的直播SDK，实现了在直播的场景下实现人脸跟踪以及趣味贴纸。</p>
+<h4 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h4><h6 id="开发环境要求"><a href="#开发环境要求" class="headerlink" title="开发环境要求"></a>开发环境要求</h6><p>  软件</p>
+<pre><code>* XCode 6.0 或以上版本
+* iOS 7.0 或以上版本
+</code></pre><p>  硬件</p>
+<pre><code>* 支持语音/视频的真机设备
+</code></pre><h4 id="编译代码示例"><a href="#编译代码示例" class="headerlink" title="编译代码示例"></a>编译代码示例</h4><ol>
+<li><p>用XCode打开demo工程文件(PLMediaStreamingKitDemo)。代码包含以下目录结构</p>
+<p><img src="images/ios-project.jpg" alt=""></p>
+</li>
+<li><p>选中项目，如下图所示，点击 “Build and Run” 按钮进行编译</p>
+<p>示例截图</p>
+</li>
+</ol>
+<p><img src="images/31.pic_hd.jpg" alt=""> | <img src="images/33.pic_hd.jpg" alt=""> |</p>
+<p>p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完成后，即可运行。</p>
+<h2 id="具体集成步骤"><a href="#具体集成步骤" class="headerlink" title="具体集成步骤"></a>具体集成步骤</h2><h4 id="第一步：准备环境"><a href="#第一步：准备环境" class="headerlink" title="第一步：准备环境"></a>第一步：准备环境</h4><p>软件</p>
+<ul>
+<li>XCode 6.0 或以上版本</li>
+<li>iOS 7.0 或以上版本</li>
+</ul>
+<p>硬件</p>
+<ul>
+<li>支持语音/视频的真机设备</li>
+</ul>
+<h4 id="第二步：项目所需库"><a href="#第二步：项目所需库" class="headerlink" title="第二步：项目所需库"></a>第二步：项目所需库</h4><ul>
+<li><strong>kiwi提供</strong>（请从sdk文件夹中获取）<ul>
+<li>libfaceTrackerSDK.a（人脸捕捉SDK）</li>
+<li>libKiwiFaceSDK.a（UI＋视频帧渲染SDK）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>自行下载</strong>（若项目中已经存在则不需要下载）</p>
+<p>必选：</p>
+<ul>
+<li>GPUImage视频渲染基于GPUImage SDK<br><a href="https://github.com/BradLarson/GPUImage.git" target="_blank" rel="external">https://github.com/BradLarson/GPUImage.git</a></li>
+<li>opencv3.framework<br><a href="https://sourceforge.net/projects/opencvlibrary/files/opencv-ios/3.0.0/" target="_blank" rel="external">https://sourceforge.net/projects/opencvlibrary/files/opencv-ios/3.0.0/</a></li>
+</ul>
+<p>可选：</p>
+<ul>
+<li>libyuv (sdk视频帧的渲染暂时只支持NV21格式的传入，如果应用视频帧是YUV或者其他视频流类型，需要导入视频流格式的转换类)<br><a href="https://github.com/lemenkov/libyuv.git" target="_blank" rel="external">https://github.com/lemenkov/libyuv.git</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>系统库</strong> （xcode自带）<ul>
+<li>UIKit.framework</li>
+<li>Foundation.framework</li>
+</ul>
+</li>
+</ul>
+<h4 id="第三步：部署工程"><a href="#第三步：部署工程" class="headerlink" title="第三步：部署工程"></a>第三步：部署工程</h4><pre><code>1. 导入 libKiwiFaceSDK.a 文件和所有包含的头文件、实现文件、资源文件。（我们提供了两种libKiwiFaceSDK.a文件。libKiwiFaceSDK.a同时支持模拟器与真机，供开发调试使用。libKiwiFaceSDK_release.a仅支持真机，供发布使用。）
+
+  ![](images/KiwiFaceSDK.jpg)
+
+2. 导入Tracker 人脸捕捉的SDK包和StickerManager。（我们提供了两种libfaceTrackerSDK.a文件。libfaceTrackerSDK_lic.a同时支持模拟器与真机，供开发调试使用。libfaceTrackerSDK_release.a仅支持真机，供发布使用。）
+
+  ![](images/Tracker.jpg)
+
+  ![](images/StickerManager.jpg)
+
+  这里注意tracker包的models文件夹和StickerManager文件夹下的stickers贴纸文件夹，必须只是导入引用，不要包含到项目工程里面来(文件夹图标为蓝色)。如下图设置：
+
+  ![](images/target-settings.png)
+
+3. 导入GPUImage，用于视频渲染（我们提供了两种libGPUImage.a文件。libGPUImage.a同时支持模拟器与真机，供开发调试使用。libGPUImage_release.a仅支持真机，供发布使用。）
+
+4. 如有需要，导入libyuv
+
+  sdk视频帧的渲染暂时只支持NV21格式的传入 如果应用视频帧是YUV或者其他视频流类型 需要导入视频流格式的转换类。
+
+5. 导入 opencv3.framework
+
+  注意，从官网下载的包有可能被错误的命名为opencv2.framework。
+</code></pre><h4 id="第四步：贴纸配置"><a href="#第四步：贴纸配置" class="headerlink" title="第四步：贴纸配置"></a>第四步：贴纸配置</h4><p>  如果有需要，请配置贴纸。贴纸相关文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">|--[sticker_1] （贴纸1）</div><div class="line">|   |--config.json （贴纸配置文件）</div><div class="line">|   |--[audio]（音频文件）</div><div class="line">|   |--[preview]（贴纸预览图）</div><div class="line">|   |--[item_1]（贴纸序列图文件夹1）</div><div class="line">|   |   |--[frame_1]（贴纸序列图1）</div><div class="line">|   |   |--[frame_2]（贴纸序列图2）</div><div class="line">|   |   |--...</div><div class="line">|   |   |--[frame_n]（贴纸序列图n）</div><div class="line">|   |--[item_2]（贴纸序列图文件夹2）</div><div class="line">|   |--...</div><div class="line">|   |--[item_n]（贴纸序列图文件夹n）</div><div class="line">|--[sticker_2]（贴纸2）</div><div class="line">|--...</div><div class="line">|--[sticker_n]（贴纸n）</div><div class="line">|—StickerConfig.json（总配置文件）</div></pre></td></tr></table></figure>
+<p>  程序靠读取在stickers文件夹下的StickerConfig.json显示相应的贴纸和图标。</p>
+<p>注意，使用贴纸云，需要在Info.plist中加入App Transport Security Settings字段，并将Allow Arbitrary Loads设置为YES。<br>  <strong>具体的json文件格式如下：</strong></p>
+<p>  StickerConfig.json</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    name</td>
+<td>贴纸的名称（UI显示和贴纸的识别）</td>
+</tr>
+<tr>
+<td>    dir</td>
+<td>贴纸存放路径文件夹名称</td>
+</tr>
+<tr>
+<td>    category</td>
+<td>类别（贴纸类型的区分或分组）</td>
+</tr>
+<tr>
+<td>    thumb</td>
+<td>贴纸图标的文件名（与声音在同一文件夹下）</td>
+</tr>
+<tr>
+<td>    voiced</td>
+<td>true（有声音）false（没有声音播放）</td>
+</tr>
+<tr>
+<td>    downloaded</td>
+<td>是否已经下载。如果没有下载，程序则可以去下载到指定目录后更改该状态</td>
+</tr>
+</tbody>
+</table>
+<p>  config.json</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    type</td>
+<td>贴纸显示的位置类型（脸部、全屏）</td>
+</tr>
+<tr>
+<td>    facePos</td>
+<td>贴纸在脸部的位置</td>
+</tr>
+<tr>
+<td>    scaleWidthOffset</td>
+<td>贴纸宽度缩放系数</td>
+</tr>
+<tr>
+<td>    scaleHeightOffset</td>
+<td>贴纸高度缩放系数</td>
+</tr>
+<tr>
+<td>    scaleXOffset</td>
+<td>贴纸在脸部水平方向偏移系数</td>
+</tr>
+<tr>
+<td>    scaleYOffset</td>
+<td>贴纸在脸部垂直方向偏移系数</td>
+</tr>
+<tr>
+<td>    alignPos</td>
+<td>边缘item参数</td>
+</tr>
+<tr>
+<td>    alignX</td>
+<td>边缘水平方向偏移系数</td>
+</tr>
+<tr>
+<td>    alignY</td>
+<td>边缘垂直方向系数</td>
+</tr>
+<tr>
+<td>    frameFolder</td>
+<td>贴纸资源目录（包括一组图片序列帧）</td>
+</tr>
+<tr>
+<td>    frameNum</td>
+<td>帧数（一组序列帧组成一个动画效果）</td>
+</tr>
+<tr>
+<td>    frameDuration</td>
+<td>每帧的间隔（秒）</td>
+</tr>
+<tr>
+<td>    frameWidth</td>
+<td>图片的宽</td>
+</tr>
+<tr>
+<td>    frameHeight</td>
+<td>图片的高</td>
+</tr>
+<tr>
+<td>    trigerType</td>
+<td>触发条件，默认0，始终显示</td>
+</tr>
+</tbody>
+</table>
+<p>  编写config.json文件可使用我司提供的工具 <a href="https://apps.kiwiapp.mobi/sticker.html" target="_blank" rel="external">https://apps.kiwiapp.mobi/sticker.html</a> 进行调试生成。</p>
+<h4 id="第五步：调用API"><a href="#第五步：调用API" class="headerlink" title="第五步：调用API"></a>第五步：调用API</h4><h6 id="使用SDK内置UI"><a href="#使用SDK内置UI" class="headerlink" title="使用SDK内置UI"></a>使用SDK内置UI</h6><p>如果直接使用我们SDK内置的UI, 可以在页面的viewDidload里面初始化SDK。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 获得SDK操作类的实例对象 */</span></div><div class="line">self.kwSdkUI = [KiwiFaceSDK_UI shareManagerUI];</div><div class="line"><span class="comment">/* 设置SDK内置UI的 ViewController 如果不用内置UI 不用设置 */</span></div><div class="line">[self.kwSdkUI setViewDelegate:self];</div><div class="line"><span class="comment">/* 初始化SDK 一些渲染对象以及初始参数 */</span></div><div class="line">[self.kwSdkUI.kwSdk initSdk];</div><div class="line"><span class="comment">/* 如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到 */</span></div><div class="line">self.kwSdkUI.isClearOldUI = NO;</div><div class="line"> <span class="comment">/* 初始化内置UI */</span></div><div class="line">[self.kwSdkUI initSDKUI];</div><div class="line"> <span class="comment">/* 渲染视频帧，在每一帧视频代理函数中调用 */</span></div><div class="line">self.kwSdkUI.kwSdk = [KiwiFaceSDK sharedManager];</div><div class="line"><span class="comment">/*</span></div><div class="line">对每一帧的视频图像进行人脸捕捉 并对当前选择的滤镜进行视频帧渲染</div><div class="line">pixelBuffer：每一帧的像素流</div><div class="line">cvMobileRotate ：屏幕方向（横竖屏）</div><div class="line">mirrored： 是否是镜像</div><div class="line">*/</div><div class="line">[kwSdk.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];</div></pre></td></tr></table></figure>
+<h6 id="使用sdk自带功能"><a href="#使用sdk自带功能" class="headerlink" title="使用sdk自带功能"></a>使用sdk自带功能</h6><ul>
+<li><p>初始化具体功能：</p>
+<ul>
+<li><p>初始化普通滤镜或贴纸集合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">self.filters = @[</div><div class="line">   <span class="comment">//描点</span></div><div class="line">   [FTPointsRenderer <span class="keyword">new</span>],</div><div class="line">   <span class="comment">//贴纸</span></div><div class="line">   [FTStickerRenderer <span class="keyword">new</span>]</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化哈哈镜滤镜集合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">self.distortionFilters = @[</div><div class="line">     <span class="comment">//方脸</span></div><div class="line">     [GPUImageSquareFaceFilter <span class="keyword">new</span>],</div><div class="line">     <span class="comment">//ET脸</span></div><div class="line">     [ETnewFilter <span class="keyword">new</span>],</div><div class="line">     <span class="comment">//胖脸</span></div><div class="line">     [FatFaceFilter <span class="keyword">new</span>],</div><div class="line">     <span class="comment">//蛇精脸</span></div><div class="line">     [SlimFaceFilter <span class="keyword">new</span>],</div><div class="line">     <span class="comment">//梨脸</span></div><div class="line">     [PearFaceDistortionFilter <span class="keyword">new</span>]</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化美颜滤镜集合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">self.beautifyFilters = @[</div><div class="line">     <span class="comment">//大眼</span></div><div class="line">     [SmallFaceBigEyeFilter <span class="keyword">new</span>]</div><div class="line">];</div><div class="line"></div><div class="line">self.beautifyNewFilters = @[</div><div class="line">     <span class="comment">//美颜</span></div><div class="line">     [GPUImageBeautifyFilter <span class="keyword">new</span>]</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化全局滤镜集合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">self.lookupFilters = @[</div><div class="line">     <span class="comment">//Nature</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypeNature],</div><div class="line">     <span class="comment">//Sweety</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypeSweety],</div><div class="line">     <span class="comment">//Clean</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypeClean],</div><div class="line">     <span class="comment">//Peach</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypePeach],</div><div class="line">     <span class="comment">//Rosy</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypeRosy],</div><div class="line">     <span class="comment">//Urban</span></div><div class="line">     [[FTLookupFilter alloc] initWithType:FTLookupTypeUrban]</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>调用具体功能：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//调用美颜</span></div><div class="line">[self.renderer addFilter:self.beautifyNewFilters[<span class="number">0</span>]];</div><div class="line"><span class="comment">//调用描点</span></div><div class="line">[self.renderer addFilter:self.filters[<span class="number">0</span>]];</div><div class="line"><span class="comment">//调用哈哈镜</span></div><div class="line">[self.renderer addFilter:self.currentDistortionFilter];</div><div class="line"><span class="comment">//调用滤镜</span></div><div class="line">[self.renderer addFilter:self.currentLookupFilter];</div><div class="line"><span class="comment">//调用贴纸</span></div><div class="line">[self.renderer addFilter:self.filters[<span class="number">1</span>]];</div></pre></td></tr></table></figure>
+</li>
+<li><p>去除具体功能：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//去除美颜</span></div><div class="line">[self.renderer removeFilter:self.beautifyNewFilters[<span class="number">0</span>]];</div><div class="line"><span class="comment">//去除描点</span></div><div class="line">[self.renderer removeFilter:self.filters[<span class="number">0</span>]];</div><div class="line"><span class="comment">//去除哈哈镜</span></div><div class="line">[self.renderer removeFilter:self.currentDistortionFilter];</div><div class="line"><span class="comment">//去除滤镜</span></div><div class="line">[self.renderer removeFilter:self.currentLookupFilter];</div><div class="line"><span class="comment">//去除贴纸</span></div><div class="line">[(FTStickerRenderer *)self.filters[<span class="number">1</span>] setSticker:nil];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="自定义功能扩展"><a href="#自定义功能扩展" class="headerlink" title="自定义功能扩展"></a>自定义功能扩展</h6><ul>
+<li><p>增加特定滤镜，进行渲染：</p>
+<p>在 sdk入口类中，有一个类型为KWRenderer的渲染类，由他来控制滤镜的增加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[KiwiFaceSDK.KWRenderer addFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</div></pre></td></tr></table></figure>
+<p>滤镜对象必须遵守GPUImageInput和KWRenderProtocol两个协议才能正常被人脸捕捉和渲染。</p>
+</li>
+<li><p>删除特定滤镜，停止渲染：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[KiwiFaceSDK.KWRenderer removeFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</div></pre></td></tr></table></figure>
+</li>
+<li><p>人脸捕捉之后，在渲染视频帧之前可以对每一帧图像做自定义处理的回调block：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef void (^RenderAndGetFacePointsBlock)(unsigned char *pixels, int format, int width, int height,result_68_t *p_result, int rstNum, int orientation,int faceNum);</div><div class="line">//block属性</div><div class="line">@property (nonatomic, copy)RenderAndGetFacePointsBlock kwRenderBlock;</div></pre></td></tr></table></figure>
+<p>block 回调用于在人脸捕捉之后，渲染之前，可以对视频帧进行自定已处理的接口。Block的3个参数可供处理和使用：</p>
+<ul>
+<li>result ：人脸坐标集合 （可能是多张人脸 是二维数组）</li>
+<li>faceNum ：捕捉到的人脸数量</li>
+<li>pixelBuffer：单帧的像素流</li>
+</ul>
+</li>
+</ul>
+<h6 id="释放内存"><a href="#释放内存" class="headerlink" title="释放内存"></a>释放内存</h6><p>我们建议在离开页面的时候释放内存</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[KiwiFaceSDK releaseManager];</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2017/05/24/kiwiDoc/" data-id="cj6wyl6ag000ijizociv88saj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/24/BeSquare的简单配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BS fastlane的简单配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/22/NSCondition/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Dispatch Semaphore &amp; NSCondition</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/v2ray/">V2Ray 配置ss &amp; vmess</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tony Duan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
