@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS多个网络请求完成后执行下一步 | swift联盟一员</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在开发中，我们很容易遇到这样的需求，需要我们同时做多个网络请求，所有网络请求都完成后才能进行下一步的操作。如下载多个图片，下载完了才能展示。今天我们就来研究一下这个问题的解决方案。 1.首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次：12345678&amp;gt;//1.无处理&amp;gt;    UIButton *Btn1 = [UIButton buttonWithT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS多个网络请求完成后执行下一步">
+<meta property="og:url" content="/2018/01/12/异步网络请求控制/index.html">
+<meta property="og:site_name" content="swift联盟一员">
+<meta property="og:description" content="在开发中，我们很容易遇到这样的需求，需要我们同时做多个网络请求，所有网络请求都完成后才能进行下一步的操作。如下载多个图片，下载完了才能展示。今天我们就来研究一下这个问题的解决方案。 1.首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次：12345678&amp;gt;//1.无处理&amp;gt;    UIButton *Btn1 = [UIButton buttonWithT">
+<meta property="og:updated_time" content="2018-01-12T03:16:38.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS多个网络请求完成后执行下一步">
+<meta name="twitter:description" content="在开发中，我们很容易遇到这样的需求，需要我们同时做多个网络请求，所有网络请求都完成后才能进行下一步的操作。如下载多个图片，下载完了才能展示。今天我们就来研究一下这个问题的解决方案。 1.首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次：12345678&amp;gt;//1.无处理&amp;gt;    UIButton *Btn1 = [UIButton buttonWithT">
+  
+    <link rel="alternate" href="/atom.xml" title="swift联盟一员" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swift联盟一员</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-异步网络请求控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/12/异步网络请求控制/" class="article-date">
+  <time datetime="2018-01-12T03:04:01.000Z" itemprop="datePublished">2018-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS多个网络请求完成后执行下一步
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在开发中，我们很容易遇到这样的需求，需要我们同时做多个网络请求，所有网络请求都完成后才能进行下一步的操作。如下载多个图片，下载完了才能展示。今天我们就来研究一下这个问题的解决方案。</p>
+<h4 id="1-首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次："><a href="#1-首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次：" class="headerlink" title="1.首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次："></a>1.首先，我们创建一个项目，然后做一般性的做法，不做任何处理去连续请求一个接口10次：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;//1.无处理</div><div class="line">&gt;    UIButton *Btn1 = [UIButton buttonWithType:UIButtonTypeCustom];</div><div class="line">&gt;    Btn1.frame = CGRectMake(100, 100, 100, 40);</div><div class="line">&gt;    Btn1.backgroundColor = [UIColor grayColor];</div><div class="line">&gt;    [Btn1 setTitle:@&quot;noConduct&quot; forState:UIControlStateNormal];</div><div class="line">&gt;    [Btn1 addTarget:self action:@selector(Btn1) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">&gt;    [self.view addSubview:Btn1];</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;<br>&gt;<br>&gt;</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt;//1.noConduct</div><div class="line">&gt;-(void)Btn1&#123;</div><div class="line">&gt;    NSString *str = @&quot;http://www.jianshu.com/p/6930f335adba&quot;;</div><div class="line">&gt;    NSURL *url = [NSURL URLWithString:str];</div><div class="line">&gt;    NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">&gt;    NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">&gt;    </div><div class="line">&gt;    for (int i=0; i&lt;10; i++) &#123;</div><div class="line">&gt;        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">&gt;            </div><div class="line">&gt;            NSLog(@&quot;%d---%d&quot;,i,i);</div><div class="line">&gt;            </div><div class="line">&gt;        &#125;];</div><div class="line">&gt;        </div><div class="line">&gt;        [task resume];</div><div class="line">&gt;    &#125;</div><div class="line">&gt;    </div><div class="line">&gt;    NSLog(@&quot;end&quot;);</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;2017-12-04 17:10:10.503 DownImage[3289:261033] end</div><div class="line">&gt;2017-12-04 17:10:10.676 DownImage[3289:261080] 0---0</div><div class="line">&gt;2017-12-04 17:10:10.704 DownImage[3289:261080] 1---1</div><div class="line">&gt;2017-12-04 17:10:10.754 DownImage[3289:261096] 4---4</div><div class="line">&gt;2017-12-04 17:10:10.760 DownImage[3289:261080] 2---2</div><div class="line">&gt;2017-12-04 17:10:10.800 DownImage[3289:261096] 5---5</div><div class="line">&gt;2017-12-04 17:10:10.840 DownImage[3289:261080] 7---7</div><div class="line">&gt;2017-12-04 17:10:10.844 DownImage[3289:261082] 6---6</div><div class="line">&gt;2017-12-04 17:10:10.846 DownImage[3289:261096] 3---3</div><div class="line">&gt;2017-12-04 17:10:10.888 DownImage[3289:261096] 8---8</div><div class="line">&gt;2017-12-04 17:10:10.945 DownImage[3289:261080] 9---9</div><div class="line">&gt;</div><div class="line">&gt;作者：_清墨</div><div class="line">&gt;链接：https://www.jianshu.com/p/fb4fb80aefb8</div><div class="line">&gt;來源：简书</div><div class="line">&gt;著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>很明显，无任何处理情况下，end最先被打印出来，由于网络请求的异步回调，然后各个网络请求的回调顺序是无序的。</p>
+<h4 id="2-使用GCD的dispatch-group-t"><a href="#2-使用GCD的dispatch-group-t" class="headerlink" title="2.使用GCD的dispatch_group_t"></a>2.使用GCD的dispatch_group_t</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&gt;//2.group--</div><div class="line">&gt;-(void)Btn2&#123;</div><div class="line">&gt;    NSString *str = @&quot;http://www.jianshu.com/p/6930f335adba&quot;;</div><div class="line">&gt;    NSURL *url = [NSURL URLWithString:str];</div><div class="line">&gt;    NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">&gt;    NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">&gt;    </div><div class="line">&gt;    dispatch_group_t downloadGroup = dispatch_group_create();</div><div class="line">&gt;    for (int i=0; i&lt;10; i++) &#123;</div><div class="line">&gt;        dispatch_group_enter(downloadGroup);</div><div class="line">&gt;        </div><div class="line">&gt;        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">&gt;            </div><div class="line">&gt;            NSLog(@&quot;%d---%d&quot;,i,i);</div><div class="line">&gt;            dispatch_group_leave(downloadGroup);</div><div class="line">&gt;            </div><div class="line">&gt;        &#125;];</div><div class="line">&gt;        </div><div class="line">&gt;        [task resume];</div><div class="line">&gt;    &#125;</div><div class="line">&gt;    </div><div class="line">&gt;    dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^&#123;</div><div class="line">&gt;        NSLog(@&quot;end&quot;);</div><div class="line">&gt;    &#125;);</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;2017-12-04 17:14:46.984 DownImage[3289:265374] 2---2</div><div class="line">&gt;2017-12-04 17:14:46.987 DownImage[3289:265370] 1---1</div><div class="line">&gt;2017-12-04 17:14:47.052 DownImage[3289:265383] 5---5</div><div class="line">&gt;2017-12-04 17:14:47.065 DownImage[3289:265370] 4---4</div><div class="line">&gt;2017-12-04 17:14:47.111 DownImage[3289:265379] 3---3</div><div class="line">&gt;2017-12-04 17:14:47.121 DownImage[3289:265383] 6---6</div><div class="line">&gt;2017-12-04 17:14:47.169 DownImage[3289:265383] 7---7</div><div class="line">&gt;2017-12-04 17:14:47.192 DownImage[3289:265370] 9---9</div><div class="line">&gt;2017-12-04 17:14:47.321 DownImage[3289:265383] 8---8</div><div class="line">&gt;2017-12-04 17:14:47.747 DownImage[3289:265374] 0---0</div><div class="line">&gt;2017-12-04 17:14:47.747 DownImage[3289:261033] end</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>从上两次输出可以看出，end确实是在所有网络请求之后才输出出来，这也是符合了我们的需求。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dispatch_group_t downloadGroup = dispatch_group_create();</div><div class="line">dispatch_group_enter(downloadGroup);</div><div class="line">dispatch_group_leave(downloadGroup);</div><div class="line">dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^&#123;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>对以上4行代码可理解为：创建一个dispatch_group_t， 每次网络请求前先dispatch_group_enter,请求回调后再dispatch_group_leave,对于enter和leave必须配合使用，有几次enter就要有几次leave，否则group会一直存在。当所有enter的block都leave后，会执行dispatch_group_notify的block。</p>
+<blockquote>
+<h4 id="3-使用GCD的信号量dispatch-semaphore-t"><a href="#3-使用GCD的信号量dispatch-semaphore-t" class="headerlink" title="3.使用GCD的信号量dispatch_semaphore_t"></a>3.使用GCD的信号量dispatch_semaphore_t</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&gt; //3.semaphore--</div><div class="line">&gt; -(void)Btn3&#123;</div><div class="line">&gt;     NSString *str = @&quot;http://www.jianshu.com/p/6930f335adba&quot;;</div><div class="line">&gt;     NSURL *url = [NSURL URLWithString:str];</div><div class="line">&gt;     NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">&gt;     NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">&gt;     </div><div class="line">&gt;     dispatch_semaphore_t sem = dispatch_semaphore_create(0);</div><div class="line">&gt;     for (int i=0; i&lt;10; i++) &#123;</div><div class="line">&gt;         </div><div class="line">&gt;         NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">&gt;             </div><div class="line">&gt;             NSLog(@&quot;%d---%d&quot;,i,i);</div><div class="line">&gt;             count++;</div><div class="line">&gt;             if (count==10) &#123;</div><div class="line">&gt;                 dispatch_semaphore_signal(sem);</div><div class="line">&gt;                 count = 0;</div><div class="line">&gt;             &#125;</div><div class="line">&gt;             </div><div class="line">&gt;         &#125;];</div><div class="line">&gt;         </div><div class="line">&gt;         [task resume];</div><div class="line">&gt;     &#125;</div><div class="line">&gt;     dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div><div class="line">&gt;     </div><div class="line">&gt;     dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">&gt;         NSLog(@&quot;end&quot;);</div><div class="line">&gt;     &#125;);</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; dispatch_semaphore_t sem = dispatch_semaphore_create(0);</div><div class="line">&gt; dispatch_semaphore_signal(sem);</div><div class="line">&gt; dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div><div class="line">&gt;</div><div class="line">&gt;</div><div class="line">&gt; 对这三句代码可以这样理解：dispatch_semaphore信号量为基于计数器的一种多线程同步机制。如果semaphore计数大于等于1，计数-1，返回，程序继续运行。如果计数为0，则等待。dispatch_semaphore_signal(semaphore)为计数+1操作,dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER)为设置等待时间，这里设置的等待时间是一直等待。</div><div class="line">&gt;</div><div class="line">&gt; 对于以上代码通俗一点就是，开始为0，等待，等10个网络请求都完成了，dispatch_semaphore_signal(semaphore)为计数+1，然后计数-1返回，程序继续执行。 (这里也就是为什么有个count变量的原因，记录网络回调的次数，回调10次之后再发信号量，使后面程序继续运行)。</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="4-考虑新需求，10个网络请求顺序回调。"><a href="#4-考虑新需求，10个网络请求顺序回调。" class="headerlink" title="4.考虑新需求，10个网络请求顺序回调。"></a>4.考虑新需求，10个网络请求顺序回调。</h5><p>需求需要顺序回调，即执行完第一个网络请求后，第二个网络请求回调才可被执行，简单来讲就是输出得是0,1,2,3…9这种方式的。</p>
+<p>对于这个需求我也是根据自己最近做的项目来提的，因为网络请求回调的异步性，我们虽可以控制网络请求的顺序执行，却不能控制它的完成回调顺序。这就有点伤了，目前我项目是找到了解决方案，但这个问题还没有找到解决办法，提出来跟大家讨论一下。(请忽略网络请求执行，回调，在回调里请求下一个接口的办法，讨论还有没有别的方法,最好show the code).</p>
+<p>最后，贴点NSOperation的代码，为了解决新需求所写，由于网络请求回调异步性不能满足需求，但若不是网络请求等异步回调的方式，这样的做法是可以的，大家可以试试.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">//4.NSOperation</div><div class="line">-(void)Btn4&#123;</div><div class="line">    NSString *str = @&quot;http://www.jianshu.com/p/6930f335adba&quot;;</div><div class="line">    NSURL *url = [NSURL URLWithString:str];</div><div class="line">    NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">    NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">    </div><div class="line">    NSMutableArray *operationArr = [[NSMutableArray alloc]init];</div><div class="line">    for (int i=0; i&lt;10; i++) &#123;</div><div class="line">        NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^&#123;</div><div class="line">            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">                </div><div class="line">                NSLog(@&quot;%d---%d&quot;,i,i);</div><div class="line">                </div><div class="line">            &#125;];</div><div class="line">            </div><div class="line">            [task resume];</div><div class="line"></div><div class="line">            //非网络请求</div><div class="line">            NSLog(@&quot;noRequest-%d&quot;,i);</div><div class="line">        &#125;];</div><div class="line">        </div><div class="line">        [operationArr addObject:operation];</div><div class="line">        if (i&gt;0) &#123;</div><div class="line">            NSBlockOperation *operation1 = operationArr[i-1];</div><div class="line">            NSBlockOperation *operation2 = operationArr[i];</div><div class="line">            [operation2 addDependency:operation1];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSOperationQueue *queue = [[NSOperationQueue alloc]init];</div><div class="line">    [queue addOperations:operationArr waitUntilFinished:NO];  //YES会阻塞当前线程</div><div class="line">#warning - 绝对不要在应用主线程中等待一个Operation,只能在第二或次要线程中等待。阻塞主线程将导致应用无法响应用户事件,应用也将表现为无响应。</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">2017-12-04 18:03:10.224 DownImage[3584:304363] noRequest-0</div><div class="line">2017-12-04 18:03:10.226 DownImage[3584:304362] noRequest-1</div><div class="line">2017-12-04 18:03:10.226 DownImage[3584:304363] noRequest-2</div><div class="line">2017-12-04 18:03:10.231 DownImage[3584:304363] noRequest-3</div><div class="line">2017-12-04 18:03:10.232 DownImage[3584:304362] noRequest-4</div><div class="line">2017-12-04 18:03:10.233 DownImage[3584:304362] noRequest-5</div><div class="line">2017-12-04 18:03:10.233 DownImage[3584:304363] noRequest-6</div><div class="line">2017-12-04 18:03:10.234 DownImage[3584:304363] noRequest-7</div><div class="line">2017-12-04 18:03:10.235 DownImage[3584:304363] noRequest-8</div><div class="line">2017-12-04 18:03:10.236 DownImage[3584:304363] noRequest-9</div><div class="line">2017-12-04 18:03:10.408 DownImage[3584:304597] 2---2</div><div class="line">2017-12-04 18:03:10.408 DownImage[3584:304597] 0---0</div><div class="line">2017-12-04 18:03:10.409 DownImage[3584:304597] 1---1</div><div class="line">2017-12-04 18:03:10.461 DownImage[3584:304597] 5---5</div><div class="line">2017-12-04 18:03:10.476 DownImage[3584:304363] 4---4</div><div class="line">2017-12-04 18:03:10.477 DownImage[3584:304365] 6---6</div><div class="line">2017-12-04 18:03:10.518 DownImage[3584:304365] 7---7</div><div class="line">2017-12-04 18:03:10.537 DownImage[3584:304596] 8---8</div><div class="line">2017-12-04 18:03:10.547 DownImage[3584:304362] 9---9</div><div class="line">2017-12-04 18:03:11.837 DownImage[3584:304362] 3---3</div></pre></td></tr></table></figure>
+<h5 id="5-还是使用信号量semaphore完成4的需求"><a href="#5-还是使用信号量semaphore完成4的需求" class="headerlink" title="5.还是使用信号量semaphore完成4的需求"></a>5.还是使用信号量semaphore完成4的需求</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">//5.semaphore--order</div><div class="line">-(void)Btn5&#123;</div><div class="line">    NSString *str = @&quot;http://www.jianshu.com/p/6930f335adba&quot;;</div><div class="line">    NSURL *url = [NSURL URLWithString:str];</div><div class="line">    NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">    NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">    </div><div class="line">    dispatch_semaphore_t sem = dispatch_semaphore_create(0);</div><div class="line">    for (int i=0; i&lt;10; i++) &#123;</div><div class="line">        </div><div class="line">        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">            </div><div class="line">            NSLog(@&quot;%d---%d&quot;,i,i);</div><div class="line">            dispatch_semaphore_signal(sem);</div><div class="line">        &#125;];</div><div class="line">        </div><div class="line">        [task resume];</div><div class="line">        dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">        NSLog(@&quot;end&quot;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">2017-12-05 10:17:28.175 DownImage[938:51296] 0---0</div><div class="line">2017-12-05 10:17:28.331 DownImage[938:51289] 1---1</div><div class="line">2017-12-05 10:17:28.506 DownImage[938:51289] 2---2</div><div class="line">2017-12-05 10:17:28.563 DownImage[938:51289] 3---3</div><div class="line">2017-12-05 10:17:28.662 DownImage[938:51289] 4---4</div><div class="line">2017-12-05 10:17:28.733 DownImage[938:51296] 5---5</div><div class="line">2017-12-05 10:17:28.792 DownImage[938:51296] 6---6</div><div class="line">2017-12-05 10:17:28.856 DownImage[938:51286] 7---7</div><div class="line">2017-12-05 10:17:29.574 DownImage[938:51289] 8---8</div><div class="line">2017-12-05 10:17:29.652 DownImage[938:51286] 9---9</div><div class="line">2017-12-05 10:17:29.653 DownImage[938:45252] end</div></pre></td></tr></table></figure>
+<p>我们对比 3 的代码，3 中我们只在最后也就是循环结束后调用dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)，循环中当网络请求回调10次(也就是都回调完)后，使传入的信号量加1:( dispatch_semaphore_signal(sem) ),这时等待结束，然后进行后续的操作。</p>
+<p>在这个方法里，我们每一次遍历，都让其dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)，这个时候线程会等待，阻塞当前线程，直到dispatch_semaphore_signal(sem)调用之后，而我们dispatch_semaphore_signal(sem)是在网络请求的回调里调用的，所以这个方法的逻辑是：</p>
+<h5 id="遍历—-gt-发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务"><a href="#遍历—-gt-发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务" class="headerlink" title="遍历—&gt;发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务"></a>遍历—&gt;发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务</h5><h5 id="发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务"><a href="#发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务" class="headerlink" title="发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务"></a>发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务</h5><h5 id="发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务-1"><a href="#发起任务—-gt-等待—-gt-任务完成信号量加1—-gt-等待结束-开始下一个任务-1" class="headerlink" title="发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务"></a>发起任务—&gt;等待—&gt;任务完成信号量加1—&gt;等待结束,开始下一个任务</h5><p>这样循环的模式,一个任务完成才能接着去做下面的任务，满足我们的需求。</p>
+<p>但我们也要发现这样一个问题，我们使用这种方式，可以明显感觉出整个过程需要花费的时间大大增加了，不像我们 3 中同时(几乎)开启任务等待完成回调，这里是一个网络请求发出，等待，完成后发出第二个网络请求，等待，完成后再发出第三个，这样我们等待的时间是10个网络请求每一个回调时间的和，在时间上大大增加了消耗，而且对于dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)，它是会阻塞线程的，我们如果需要在网络请求完成后修改UI，那这种方式会影响我们的界面交互,接下来我们对比一下两者时间消耗:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">3-------------3----------3-------</div><div class="line">2017-12-05 10:29:51.178 DownImage[938:56971] 2---2</div><div class="line">2017-12-05 10:29:51.193 DownImage[938:57200] 0---0</div><div class="line">2017-12-05 10:29:51.202 DownImage[938:56631] 3---3</div><div class="line">2017-12-05 10:29:51.248 DownImage[938:56971] 1---1</div><div class="line">2017-12-05 10:29:51.262 DownImage[938:56971] 5---5</div><div class="line">2017-12-05 10:29:51.291 DownImage[938:56631] 6---6</div><div class="line">2017-12-05 10:29:51.375 DownImage[938:56631] 7---7</div><div class="line">2017-12-05 10:29:51.384 DownImage[938:56631] 4---4</div><div class="line">2017-12-05 10:29:51.434 DownImage[938:56971] 8---8</div><div class="line">2017-12-05 10:29:51.487 DownImage[938:57199] 9---9</div><div class="line">2017-12-05 10:29:51.488 DownImage[938:45252] end</div><div class="line"></div><div class="line">5-------------5----------5-------</div><div class="line">2017-12-05 10:29:52.190 DownImage[938:56631] 0---0</div><div class="line">2017-12-05 10:29:52.304 DownImage[938:57199] 1---1</div><div class="line">2017-12-05 10:29:52.432 DownImage[938:56971] 2---2</div><div class="line">2017-12-05 10:29:52.520 DownImage[938:56971] 3---3</div><div class="line">2017-12-05 10:29:52.576 DownImage[938:56631] 4---4</div><div class="line">2017-12-05 10:29:52.628 DownImage[938:56971] 5---5</div><div class="line">2017-12-05 10:29:52.706 DownImage[938:56631] 6---6</div><div class="line">2017-12-05 10:29:52.764 DownImage[938:56971] 7---7</div><div class="line">2017-12-05 10:29:52.853 DownImage[938:56631] 8---8</div><div class="line">2017-12-05 10:29:52.925 DownImage[938:56971] 9---9</div><div class="line">2017-12-05 10:29:52.926 DownImage[938:45252] end</div></pre></td></tr></table></figure>
+<p>看得出3花费时间为51.488  -  51.178约300多ms<br>— —5花费时间为52.926 -  52.190约700多ms</p>
+<p>所以大家还请谨慎使用。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/fb4fb80aefb8" target="_blank" rel="external">https://www.jianshu.com/p/fb4fb80aefb8</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="/2018/01/12/异步网络请求控制/" data-id="cjcbcq6lp000l2xzoaajaktjj" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/28/iOS11升级整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">iOS11升级整理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2Ray/">V2Ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/V2Ray/" style="font-size: 10px;">V2Ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/12/异步网络请求控制/">iOS多个网络请求完成后执行下一步</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/28/iOS11升级整理/">iOS11升级整理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/git-repo无差迁移/">git repo无差迁移</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/c的注意事项/">c的注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/09/Lede运行v2ray/">Lede运行v2ray</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Tony Duan<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
